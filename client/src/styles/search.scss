@@ -7,49 +7,36 @@
     padding: 12rem 2rem 4rem 2rem;
     background: url('../assets/reciplease-search.png');
     background-size: cover;
+
+    .search-bar {
+        display: flex;
+        width: 90rem;
+        transition: opacity .75s;
+        opacity: 1;
+    }
 }
-.search-bar {
-    display: flex;
-    width: 70rem;
-    height: 70px;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .20);
-    transition: opacity .75s;
-    opacity: 1;
-}
-#search-bar-loading {
-    opacity: 0
-}
-.search-icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 10%;
-    background: white;
-}
-#search-input {
-    background: white;
-    height: 87%;
-    width: 45rem;
+
+.search-input {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 80.21%, rgba(0, 0, 0, 0.25) 100%),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    height: 5.5rem;
+    width: 60rem;
     margin-right: .3rem;
     line-height: 87%;
-    font-size: 24px;
+    font-size: 2.4rem;
+    padding-left: 3%;
 }
+
 #search-button {
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 88.02%, #B8B6B6 100%),
     linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 55.73%),
     linear-gradient(0deg, #FCDE7B, #FCDE7B);
     font-family: Roboto;
-    font-size: 30px;
+    font-size: 3rem;
     font-weight: 400;
-    line-height: 41px;
-    letter-spacing: 0em;
     text-align: center;
-    padding: 2rem 4rem;
     width: 182px;
-    border-radius: 0;
-    display: flex;
-    align-items: center;
-    border: none;
+    height: 5.5rem;
     transition: .25s ease-in-out;
 
     &:hover {
@@ -64,9 +51,6 @@
     justify-content: space-evenly;
     overflow-y: scroll;
     margin-top: 4rem;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
-    background: linear-gradient(to right, #FCDE7B, transparent);
-    border-radius: 8px;
     transition: opacity .75s;
     opacity: 1;
 }
