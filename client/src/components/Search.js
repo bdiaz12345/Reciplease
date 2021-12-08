@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/search.scss';
 import axios from 'axios';
+import { StarOutlined, StarFilled, ArrowRightOutlined } from '@ant-design/icons'
 
 function Search() {
     const [results, setResults] = useState([]);
@@ -21,6 +22,7 @@ function Search() {
                     return recipe;
                 })
                 setResults(likedProp);
+                console.log(likedProp)
             })
             .catch(err => {
                 console.log(err)
@@ -29,6 +31,12 @@ function Search() {
                 setLoading(false);
                 setPageRendered(true);
             })
+    }
+
+    const starIconStyle = {
+        fontSize: '2.5rem', 
+        height: '5vh',
+        cursor: 'pointer'
     }
     
     return (
@@ -57,13 +65,19 @@ function Search() {
                                 let liked = recipe.liked
                                 
                                 return (
-                                    <div id="card">
+                                    <div className="card" key={recipe.id}>
                                         <img className="recipe-image" src={recipeImage} alt="recipe"/>
                                         <div className="card-content">
                                             <h2 className="recipe-title">{recipeName}</h2>
-                                            {vegetarian ? <p style={{display: 'none'}} className="vegetarian">Vegetarian</p> : null}
-                                            {vegan ? <p style={{display: 'none'}} className="vegan">Vegan</p> : null}
-                                            {cheap ? <p style={{display: 'none'}} className="cheap">Cost-friendly</p> : null}
+                                            <div className="recipe-info">
+                                                <p>Prep-time < br />{recipe.readyInMinutes}</p>
+                                                <p>Servings < br />{recipe.servings}</p>
+                                                <p>score < br />{recipe.spoonacularScore}</p>
+                                            </div>
+                                            <div className="learn-more">
+                                                <StarOutlined style={starIconStyle} /> 
+                                                <button>More Info <ArrowRightOutlined /></button>
+                                            </div>
                                         </div>
                                     </div>
                                 )

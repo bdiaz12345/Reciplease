@@ -60,20 +60,18 @@
 #no-wrapper {
     display: none;
 }
-#card {
-    height: 8rem;
-    width: 80vw;
+.card {
+    width: 60%;
     display: flex;
     flex-direction: row;
     margin: 2rem 0;
     border: none;
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .2);
     background: white;
-    border-radius: 0 8px 8px 0;
+    border-radius: 10px;
 
     &:hover {
         background: #f8f0e3;
-        cursor: pointer;
     }
 }
 .card-content {
@@ -81,77 +79,56 @@
     padding-left: 2rem;
     padding-right: 1rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-}
-.recipe-image {
-    width: 8rem;
-    object-fit: cover;
-}
-.recipe-title {
-    font-size: 24px;
-    text-align: center;
-}
-.vegetarian {
-    color: skyblue;
-    font-size: 16px;
-}
-.vegan {
-    color: lightgreen;
-    font-size: 16px;
-}
-.cheap {
-    color: lightgreen;
-    font-size: 16px;
-}
-.expensive {
-    color: red;
-    font-size: 16px;
-}
-.recipe-details-drawer {
-    width: 50vw;
-    min-height: 100vh;
-    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 2rem;
-    background: #f8f0e3;
-}
-.recipe-details-title {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-}
-.recipe-details-image {
-    width: 80%;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
-    margin-bottom: 2rem;
-}
-.recipe-details-description {
-    border-top: 1px solid silver;
-    padding-top: 2rem;
-    font-size: 1.5rem;
-    width: 80%;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid silver;
-}
-#drawer-close-icon {
-    position: fixed;
-    top: 1%;
-    left: 48%;
-    &:hover {
-        cursor: pointer;
+    border: none;
+    padding-top: 2%;
+
+    .recipe-info {
+        display: flex;
+        justify-content: space-evenly;
+        width: 60%;
+        margin-top: 6%;
+
+        p {
+            font-size: 2rem;
+            text-align: center;
+            line-height: 1.5;
+        }
     }
 }
-.diet-details {
-    width: 80%;
-    padding: 2rem 0;
-    border-bottom: 1px solid silver;
+.recipe-image {
+    width: 40rem;
+    object-fit: cover;
+    // border-radius: 12px;
+    margin: 2%;
+}
+.recipe-title {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.learn-more {
+    margin-top: 6%;
+    margin-bottom: 5%;
     display: flex;
     justify-content: space-evenly;
-}
-#diet-tags-hidden {
-    display: none;
+    align-items: baseline;
+    width: 50%;
+
+    button {
+        background: linear-gradient(0deg, #FCDE7B, #FCDE7B); ;
+        color: black;
+        font-size: 1.8rem;
+        width: 50%;
+        border: none;
+        height: 5vh;
+        border-radius: 20px;
+
+        &:hover {
+            cursor: pointer;
+            background: coral;
+            color: #fff;
+        }
+    }
 }
