@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import '../styles/search.scss';
 import axios from 'axios';
-import { StarOutlined, StarFilled, ArrowRightOutlined } from '@ant-design/icons'
+import { StarOutlined, StarFilled, Loading3QuartersOutlined } from '@ant-design/icons';
+import ReactHtmlParser from 'react-html-parser';
 
 function Search() {
     const [results, setResults] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [loading, setLoading] = useState(false);
-    const [pageRendered, setPageRendered] = useState(false);
 
     const submitSearch = (e) => {
         e.preventDefault()
@@ -16,91 +16,94 @@ function Search() {
         axios
             .post('https://reciplease-backend.vercel.app/recipe', {recipe: searchValue})
             .then(res => {
-                const likedProp = res.data.map(recipe => {
+                const likedRecipe = res.data.map(recipe => {
                     recipe.open = false;
                     recipe.liked = false;
-                    return recipe;
+                    return recipe
                 })
-                setResults(likedProp);
-                console.log(likedProp)
+                setResults(likedRecipe)
+                console.log(likedRecipe)
             })
             .catch(err => {
-                console.log(err)
+                console.log({err})
             })
             .finally(() => {
                 setLoading(false);
-                setPageRendered(true);
             })
     }
 
+    const moreInfoHandler = (id) => {
+        setResults(
+            results.map(recipe => {
+                if (recipe.id === id) {
+                    recipe.open = !recipe.open
+                }
+                return recipe
+            })
+        )
+    }
+
+    // Ant Design Styles
     const starIconStyle = {
         fontSize: '2.5rem', 
         height: '5vh',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: '#fcde7b',
+    }
+
+    const loadingIconStyle = {
+        fontSize: '3rem',
+        width: '100%'
     }
     
     return (
-        <div>
-                {pageRendered ? <div className="search-content">
-                    <form onSubmit={submitSearch} className="search-form">
-                        <div className="search-bar">
-                            <input
-                                placeholder="Search by Recipe Name, Ingredient"
-                                className="search-input"
-                                value={searchValue}
-                                onChange={(e) => {setSearchValue(e.target.value)}}
-                            />
-                            <button id="search-button">Search</button>
-                        </div>
-                    </form>
-                    <div className="cards-wrapper" id={loading ? 'cards-wrapper-loading' : ''}>
-                            {!results ? console.log('nothin to see here') : results && !loading ? results.map(recipe => {
-                                let recipeName = recipe.title
-                                let recipeDescription = recipe.summary.replaceAll('<b>', '').replaceAll('</b>', '').replaceAll('<a href="', '').replaceAll('>', '').replaceAll('</a', '').replaceAll('"', ' ')
-                                let vegetarian = recipe.vegetarian
-                                let vegan = recipe.vegan
-                                let recipeImage = recipe.image
-                                let cheap = recipe.cheap
-                                let recipeId = recipe.id
-                                let liked = recipe.liked
-                                
-                                return (
-                                    <div className="card" key={recipe.id}>
-                                        <img className="recipe-image" src={recipeImage} alt="recipe"/>
-                                        <div className="card-content">
-                                            <h2 className="recipe-title">{recipeName}</h2>
-                                            <div className="recipe-info">
-                                                <p>Prep-time < br />{recipe.readyInMinutes}</p>
-                                                <p>Servings < br />{recipe.servings}</p>
-                                                <p>score < br />{recipe.spoonacularScore}</p>
-                                            </div>
-                                            <div className="learn-more">
-                                                <StarOutlined style={starIconStyle} /> 
-                                                <button>More Info <ArrowRightOutlined /></button>
-                                            </div>
+        <div className="search-content">
+            <form onSubmit={submitSearch} className="search-form">
+                <input
+                    placeholder="Search by Recipe Name, Ingredient"
+                    type="text"
+                    className="search-input"
+                    value={searchValue}
+                    onChange={(e) => {setSearchValue(e.target.value)}}
+                />
+                <button type="submit" className="search-button">Search</button>
+            </form>
+
+            <div className="cards-wrapper">
+                { loading && <Loading3QuartersOutlined spin style={loadingIconStyle} />}
+                { results && results.map(recipe => {
+                    const { id, image, title, readyInMinutes, servings, spoonacularScore, vegan, vegetarian, pricePerServing } = recipe
+                    // const description = recipe.summary.replaceAll('<b>', '').replaceAll('</b>', '').replaceAll('<a href="', '').replaceAll('>', '').replaceAll('</a', '').replaceAll('"', ' ')
+                    const description = recipe.summary
+                    return (
+                            <div className="card" key={id}>
+                                <img className="recipe-image" src={image} alt="recipe"/>
+                                <div className="card-content">
+                                    <h2 className="recipe-title">{title}</h2>
+                                    <div className="recipe-info">
+                                        <p>Prep-time < br />{readyInMinutes} Minutes</p>
+                                        <p>Servings < br />{servings}</p>
+                                        <p>Score < br />{spoonacularScore}</p>
+                                    </div>
+                                </div>
+
+                                { recipe.open && (
+                                    <div className='open'>
+                                        <div className='description'>
+                                            <h2>Description</h2>
+                                            <p>{ ReactHtmlParser (description)}</p>
                                         </div>
                                     </div>
-                                )
-                            }) : null}
-                        </div>
-                </div>
-                :
-                <div className="search-content">
-                <form onSubmit={submitSearch} className="search-form">
-                    <div className="search-bar">
-                        <input
-                            placeholder="Search by Recipe Name, Ingredient"
-                            type="text"
-                            className="search-input"
-                            value={searchValue}
-                            onChange={(e) => {setSearchValue(e.target.value)}}
-                        />
-                        <button type="submit" id="search-button">Search</button>
-                    </div>
+                                )}
 
-                </form>
-                </div>
-                }
+                                <div className="learn-more">
+                                    {recipe.liked ? (<StarFilled style={starIconStyle} />) : (<StarOutlined style={starIconStyle} /> ) }
+                                    <button onClick={() => moreInfoHandler(id)}>{ !recipe.open ? 'More Info' : 'Less Info'}</button>
+                                </div>
+                            </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
