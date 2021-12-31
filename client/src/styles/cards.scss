@@ -1,3 +1,7 @@
+.cards-wrapper::-webkit-scrollbar {
+    display: none; /* Hides Scrollbar for Chrome, Safari and Opera */
+}
+
 .cards-wrapper {
     display: flex;
     flex-direction: column;
@@ -7,6 +11,8 @@
     transition: opacity .75s;
     opacity: 1;
     max-width: 70%;
+    -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
+    scrollbar-width: none;  /* Hides Scrollbar for Firefox */
 
     .card {
         width: 60%;

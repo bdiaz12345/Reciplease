@@ -23,8 +23,8 @@ function Cards({recipes, loading, likedRecipeHandler, moreInfoHandler }) {
 
     return (
         <>
-            { loading && <Spin indicator={spinIndicator}  />}
             <div className="cards-wrapper">
+            { loading && <Spin indicator={spinIndicator}  />}
                 { recipes && recipes.map(recipe => {
                     const { id, image, title, readyInMinutes, servings, spoonacularScore, vegan, vegetarian, pricePerServing } = recipe
                     const description = recipe.summary
