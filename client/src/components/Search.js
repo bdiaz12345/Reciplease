@@ -56,6 +56,7 @@ function Search() {
 
     return (
         <div className="search-content">
+            <h1 className="landing-title" style={{position: 'fixed', top: '4rem'}}>Reciplease</h1>
             <form onSubmit={submitSearch} className="search-form">
                 <input
                     placeholder="Search by Recipe Name, Ingredient"
