@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/cards.scss';
-import { Spin } from 'antd';
-import { StarOutlined, StarFilled, LoadingOutlined } from '@ant-design/icons';
+
+import { StarOutlined, StarFilled, Loading3QuartersOutlined } from '@ant-design/icons';
 import ReactHtmlParser from 'react-html-parser';
 
 function Cards({recipes, loading, likedRecipeHandler, moreInfoHandler }) {
@@ -14,16 +14,13 @@ function Cards({recipes, loading, likedRecipeHandler, moreInfoHandler }) {
     }
 
     const loadingIconStyle = {
-        fontSize: '4.5rem',
-        width: '100%',
-        marginTop: 50
+        fontSize: '3rem',
+        width: '100%'
     }
-
-    const spinIndicator = <LoadingOutlined spin style={loadingIconStyle} />
 
     return (
         <>
-            { loading && <Spin indicator={spinIndicator}  />}
+            { loading && <Loading3QuartersOutlined spin style={loadingIconStyle} />}
             <div className="cards-wrapper">
                 { recipes && recipes.map(recipe => {
                     const { id, image, title, readyInMinutes, servings, spoonacularScore, vegan, vegetarian, pricePerServing } = recipe
@@ -46,26 +43,14 @@ function Cards({recipes, loading, likedRecipeHandler, moreInfoHandler }) {
                                             <h2>Description</h2>
                                             <p>{ ReactHtmlParser(description) }</p>
                                         </div>
-
-                                        <div className="steps">
-                                            <h2>Steps</h2>
-                                            { recipe.analyzedInstructions[0].steps ? (
-                                                recipe.analyzedInstructions[0].steps.map(step => 
-                                                    <ol>
-                                                        <li>{step.step}</li>
-                                                    </ol>
-                                                )
-                                            ) : <Spin indicator={spinIndicator}  /> }
-                                        </div>
                                     </div>
                                 )}
 
                                 <div className="learn-more">
                                     {recipe.liked ? (
-                                        <StarFilled style={starIconStyle} onClick={() => likedRecipeHandler(id)} /> 
-                                    ) : (
-                                        <StarOutlined style={starIconStyle} onClick={() => likedRecipeHandler(id)} /> 
-                                    )}
+                                        <StarFilled style={starIconStyle} onClick={() => likedRecipeHandler(id)} />) : (
+                                        <StarOutlined style={starIconStyle} onClick={() => likedRecipeHandler(id)} /> ) 
+                                    }
                                     <button onClick={() => moreInfoHandler(id)}>{ !recipe.open ? 'More Info' : 'Less Info'}</button>
                                 </div>
                             </div>
@@ -73,7 +58,6 @@ function Cards({recipes, loading, likedRecipeHandler, moreInfoHandler }) {
                 })}
             </div>
         </>
-        
     )
 }
 

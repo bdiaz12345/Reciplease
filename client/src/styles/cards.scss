@@ -3,6 +3,8 @@
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     margin-top: 4rem;
     transition: opacity .75s;
     opacity: 1;
@@ -112,3 +114,7 @@
         }
     }
 }
+
+.cards-wrapper::-webkit-scrollbar {
+    display: none;
+  }
