@@ -46,3 +46,48 @@
         }
     }
 }
+
+.drawer-container {
+    display: flex;
+    flex-direction: column;
+    .drawer-recipe-image {
+        width: 500px;
+        display: flex;
+        align-self: center;
+        justify-self: center;
+
+        object-fit: cover;
+        border-radius: 10px;
+        margin-top: 4%;
+    }
+
+    .drawer-card-content {
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        padding-top: 2%;
+
+        .drawer-recipe-title {
+            font-size: 2rem;
+            width: 70%;
+            text-align: center;
+        }
+
+        .drawer-recipe-info {
+            display: flex;
+            justify-content: space-between;
+            width: 75%;
+            margin-top: 6%;
+
+            .description {
+                font-size: 2rem;
+                text-align: center;
+                line-height: 1.5;
+            }
+        }
+    }
+}

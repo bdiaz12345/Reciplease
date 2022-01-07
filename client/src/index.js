@@ -9,6 +9,7 @@ import App from './App';
 
 // style import
 import './index.css'
+import 'antd/dist/antd.css'
 
 ReactDOM.render(
     <Router>
