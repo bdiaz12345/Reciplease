@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 function Landing() {
     const history = useNavigate();
 
+    console.log('here', localStorage)
+
     const onSubmit = () => {
         history('/login');
     }
