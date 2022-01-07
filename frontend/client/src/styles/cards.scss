@@ -1,0 +1,129 @@
+.cards-wrapper::-webkit-scrollbar {
+    display: none; /* Hides Scrollbar for Chrome, Safari and Opera */
+}
+
+.cards-wrapper {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    // align-items: center;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    margin-top: 4rem;
+    transition: opacity .75s;
+    opacity: 1;
+    max-width: 70%;
+    -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
+    scrollbar-width: none;  /* Hides Scrollbar for Firefox */
+
+    .card {
+        width: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+        border: none;
+        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .2);
+        background: white;
+        border-radius: 10px;
+    
+        &:hover {
+            background: #f8f0e3;
+        }
+
+        .recipe-image {
+            width: 70%;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-top: 4%;
+        }
+
+        .card-content {
+            width: 100%;
+            padding-left: 2rem;
+            padding-right: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: none;
+            padding-top: 2%;
+
+            .recipe-title {
+                font-size: 2rem;
+                width: 70%;
+                text-align: center;
+            }
+
+            .recipe-info {
+                display: flex;
+                justify-content: space-between;
+                width: 75%;
+                margin-top: 6%;
+            
+                p {
+                    font-size: 2rem;
+                    text-align: center;
+                    line-height: 1.5;
+                }
+            }
+        }
+
+    
+    .open {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5%;
+
+        .description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h2 {
+                font-size: 4rem;
+                margin-bottom: 3%;
+            }
+
+            p {
+                font-size: 2em;
+                text-align: center;
+                line-height: 1.5;
+            }
+        }
+    }
+
+    .learn-more {
+        margin-top: 6%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: baseline;
+        width: 50%;
+    
+        button {
+            background: linear-gradient(0deg, #FCDE7B, #FCDE7B);
+            color: black;
+            font-size: 1.8rem;
+            width: 50%;
+            border: none;
+            height: 5vh;
+            border-radius: 20px;
+            position: relative;
+            bottom: 8px;
+    
+            &:hover {
+                cursor: pointer;
+                background: coral;
+                color: #fff;
+            }
+            }
+        }
+    }
+}
+
+.cards-wrapper::-webkit-scrollbar {
+    display: none;
+  }

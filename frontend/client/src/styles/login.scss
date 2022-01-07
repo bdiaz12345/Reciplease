@@ -1,0 +1,80 @@
+#login-input {
+    border: none;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .2);
+    margin-bottom: 2rem;
+    width: 25vw;
+    height: 50px;
+    font-size: 24px;
+    padding-left: 8px;
+    background: white;
+}
+.login-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: url('../assets/edgar-castrejon-1CsaVdwfIew-unsplash.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 20% 45%;
+}
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    background: rgba(235, 244, 255, 0.95);
+    h1 {
+        font-size: 6.4rem;
+        margin-top: 5%;
+        margin-bottom: 4%;
+        font-weight: bold;
+    }
+    p {
+        font-size: 1.8rem;
+        width: 454px;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        .MuiFormControl-root {
+            margin-bottom: 5%;
+            width: 358px;
+            background: #ffffff;
+            width: 60%;
+            box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+            
+            input {
+                font-size: 2.5rem;
+            }
+        }
+    }
+    .options, a {
+        font-size: 2rem;
+        color: #F17012;
+    }
+}
+.cookin-button-login {
+    background: #FCDE7B;
+    font-size: 2.8rem;
+    box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+    border: none;
+    transition: .25s ease-in-out;
+    align-self: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    width: 25vw;
+
+    &:hover {
+        background: coral;
+        color: white;
+        cursor: pointer;
+    }
+}
