@@ -24,6 +24,7 @@
         overflow-y: scroll;
         -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
         scrollbar-width: none;  /* Hides Scrollbar for Firefox */
+        margin-top: 10rem;
         
         .cookbook-header {
             font-family: 'Rock Salt';
@@ -33,6 +34,7 @@
             text-align: center;
             position: fixed;
             right: 10%;
+            top: 0;
         }
 
         .card {
@@ -148,6 +150,7 @@
             overflow-y: scroll;
             -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
             scrollbar-width: none;  /* Hides Scrollbar for Firefox */
+            margin-top: 0;
             
             .cookbook-header {
                 font-family: 'Rock Salt';

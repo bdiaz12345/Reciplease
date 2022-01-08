@@ -16,7 +16,6 @@ function Search(state) {
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
-        console.log(user)
         dispatch(getUser({email: user.email, username: user.username}))
     }, [])
 
