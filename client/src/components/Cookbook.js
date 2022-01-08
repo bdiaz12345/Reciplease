@@ -2,11 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import '../styles/cookbook.scss'
 import { SearchOutlined } from '@ant-design/icons'
+import { getUser } from '../actions/index'
 
 function Cookbook(state) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        dispatch(getUser({email: user.email, username: user.username}))
+    }, [])
+
     const [savedRecipes, setSavedRecipes] = useState([]);
 
     const history = useNavigate();

@@ -38,7 +38,7 @@ function LogIn(state) {
             .then(res => {
                 console.log('congratulations you fuck, welcum to our website af', res)
                 dispatch(getUser({username: res.data.username, email: loginValues.email}));
-                localStorage.setItem('user', res.data)
+                localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email}))
             })
             .finally(() => {
                 history('/search')

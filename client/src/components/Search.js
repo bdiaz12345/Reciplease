@@ -8,8 +8,17 @@ import { BookOutlined } from '@ant-design/icons';
 import Cards from './Cards';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import { getUser } from '../actions';
+import { useDispatch } from 'react-redux'
 
 function Search(state) {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user'));
+        console.log(user)
+        dispatch(getUser({email: user.email, username: user.username}))
+    }, [])
 
     console.log('user', state)
 
