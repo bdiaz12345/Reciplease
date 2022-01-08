@@ -141,10 +141,10 @@ function Search(state) {
         <div className="search-content">
             <div className="search-header">
                 <div onClick={() => {history('/cookbook')}}>
-                    <BookOutlined style={{fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'}}/>
+                    <BookOutlined />
                 </div>
-                <h1 className="landing-title" style={{position: 'relative'}}>Reciplease</h1>
-                <div onClick={logout}>
+                <h1 className="landing-title">Reciplease</h1>
+                <div className="logout-div" onClick={logout}>
                     <Link className="logout-link" to="/">Logout</Link>
                 </div>
             </div>

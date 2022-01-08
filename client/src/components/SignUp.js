@@ -4,6 +4,8 @@ import schema from '../formSchema/signSchema';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
 import "../styles/signup.scss";
+import { getUser } from '../actions';
+import { useDispatch } from 'react-redux';
 // import { Input } from '@material-ui/core';
 // import { Button } from '@mui/material';
 // import CircularProgress from '@mui/material/CircularProgress';
@@ -23,6 +25,8 @@ function SignUp() {
         message: "",
         activeClass: ""
     })
+
+    const dispatch = useDispatch();
     
     const push = useNavigate();
 
@@ -71,6 +75,7 @@ function SignUp() {
                     message: "Success!",
                     activeClass:"success-modal"
                 })
+                dispatch(getUser({username: res.data.username, email: formValues.email}));
                 localStorage.setItem("token", res.data.token)
                 setTimeout(() => {
                     push("/search")
