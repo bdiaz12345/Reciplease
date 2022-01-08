@@ -150,6 +150,8 @@
                 .anticon-book {
                     font-size: 30px;
                     margin-left: 1rem;
+                    position: fixed;
+                    top: .5%;
                 }
             }
 
@@ -164,7 +166,8 @@
                 width: 20%;
                 .logout-link {
                     color: #FCDE7B;
-                    margin-top: 5rem;
+                    position: fixed;
+                    top: 1.5%;
                     font-size: 2rem;
                     text-decoration: underline;
                 }

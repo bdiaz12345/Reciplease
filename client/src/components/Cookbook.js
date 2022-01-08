@@ -33,7 +33,7 @@ function Cookbook(state) {
         <>
             <div className="cookbook-content">
                 <div onClick={() => {history('/search')}}>
-                    <SearchOutlined style={window.matchMedia("(min-width: 768px").matches ? {fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'} : {fontSize: '30px', color: 'coral', cursor: 'pointer', position: 'relative', top: '-10%'}}/>
+                    <SearchOutlined style={window.matchMedia("(min-width: 768px").matches ? {fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'} : {fontSize: '30px', color: 'coral', cursor: 'pointer', position: 'fixed', top: '3%'}}/>
                 </div>
                 <div className="card-container">
                 <h1 className="cookbook-header">Saved Recipes</h1>
