@@ -131,7 +131,7 @@ function SignUp() {
                     <input
                         className="signup-input"
                         name='password'
-                        type='password '
+                        type='password'
                         value={formValues.password}
                         onChange={handleInputChange}
                         placeholder='Password'
