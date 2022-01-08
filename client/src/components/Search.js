@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/search.scss';
 import axios from 'axios';
@@ -6,8 +6,13 @@ import { Drawer } from 'antd'
 import ReactHtmlParser from 'react-html-parser';
 import { BookOutlined } from '@ant-design/icons';
 import Cards from './Cards';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 
-function Search() {
+function Search(state) {
+
+    console.log('user', state)
+
     let openRecipe = {
         id: '',
         image: '',
@@ -26,6 +31,8 @@ function Search() {
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
     const [drawerRecipe, setDrawerRecipe] = useState(openRecipe);
+
+    const history = useNavigate();
 
     const showDrawer = (e) => {
         setDrawerRecipe({
@@ -85,6 +92,14 @@ function Search() {
             results.map(recipe => {
                 if (recipe.id === id) {
                     recipe.liked = !recipe.liked
+                    axios.put('https://reciplease-backend.vercel.app/users/saved_recipes', 
+                    {
+                        email: state.email, 
+                        recipe: recipe
+                    })
+                    .then(res => {
+                        console.log(res);
+                    })
                 }
 
                 return recipe
@@ -125,7 +140,9 @@ function Search() {
             </Drawer>
         <div className="search-content">
             <div className="search-header">
-                <BookOutlined style={{fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'}}/>
+                <div onClick={() => {history('/cookbook')}}>
+                    <BookOutlined style={{fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'}}/>
+                </div>
                 <h1 className="landing-title" style={{position: 'relative'}}>Reciplease</h1>
                 <div onClick={logout}>
                     <Link className="logout-link" to="/">Logout</Link>
@@ -148,4 +165,9 @@ function Search() {
     )
 }
 
-export default Search
+const mapStateToProps = state => ({
+    username: state.username,
+    email: state.email
+})
+
+export default connect(mapStateToProps)(Search)

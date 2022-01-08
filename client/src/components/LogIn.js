@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // import loginSchema from '../formSchema/loginSchema';
 import axios from 'axios';
+import { getUser } from '../actions';
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 // import Input from '@mui/material/Input';
 // import { ButtonUnstyled } from '@mui/material';
 
@@ -11,7 +14,9 @@ const formErrors = {
     password: ''
 }
 
-function LogIn() {
+function LogIn(state) {
+    console.log(state)
+    const dispatch = useDispatch();
     const [loginValues, setLoginValues] = useState({});
     // const [loginErrors, setLoginErrors] = useState(formErrors);
 
@@ -32,7 +37,11 @@ function LogIn() {
         axios.post('https://reciplease-backend.vercel.app/users/login', loginValues)
             .then(res => {
                 console.log('congratulations you fuck, welcum to our website af', res)
-                history('/search');
+                dispatch(getUser({username: res.data.username, email: loginValues.email}));
+                localStorage.setItem('user', res.data)
+            })
+            .finally(() => {
+                history('/search')
             })
             .catch(err => {console.log(err)})
     }
@@ -85,4 +94,8 @@ function LogIn() {
     )
 }
 
-export default LogIn
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(mapStateToProps, {getUser})(LogIn)
