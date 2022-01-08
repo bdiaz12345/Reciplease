@@ -6,6 +6,7 @@ import Landing from './components/Landing'
 import LogIn from './components/LogIn'
 import Search from './components/Search'
 import SignUp from './components/SignUp'
+import ForgotPassword from './components/ForgotPassword'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="login" element={<LogIn/>} />
         <Route path="search" element={<Search/>} />
         <Route path="signup" element={<SignUp/>} />
+        <Route path="forgot" element={<ForgotPassword />} />
     </Routes>
   );
 }

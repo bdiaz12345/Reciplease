@@ -8,8 +8,6 @@
     background: url("../assets/signup-page.png");
     background-size: cover;
 
-
-
     form {
         display: flex;
         flex-direction: column;
@@ -54,28 +52,29 @@
             padding: 2%;
         }
 
-        .MuiInputBase-root { 
+        .signup-input {
             margin-bottom: 5%;
-            width: 60%;
-            background-color: #ffffff;
-            box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.2);
-            padding-left: 8px;
-
-            input {
-                font-size: 2.5rem;
-            }
+            background: #ffffff;
+            width: 65%;
+            box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+            font-size: 2.4rem;
+            border: none;
+            height: 50px;
+            padding-left: 3%;
         }
 
-        button {
+        .signup-btn {
             background: #FCDE7B;
+            border: none;
             font-size: 2.8rem;
-            width: 60%;
+            width: 65%;
             margin-top: 2%;
             margin-bottom: 5%;
             box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
             text-transform: none;
             color: black;
             transition: .25s ease-in-out;
+            cursor: pointer;
 
             &:hover {
                 background: coral;
@@ -83,40 +82,17 @@
             }
         }
 
-        .options, a {
+        .options {
             font-size: 2rem;
-            color: #F17012;
+
+            a {
+                color: #f17012;
+
+                &:hover {
+                    border-bottom: 2px solid #f17012;
+                }
+                
+            }
         }
     }
-    
-    #login-input {
-        border: none;
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .2);
-        margin-bottom: 2rem;
-        width: 25vw;
-        height: 50px;
-        font-size: 24px;
-        padding-left: 8px;
-        background: white;
-    }
-
-    .cookin-button-login {
-        background: #FCDE7B;
-        font-size: 2.8rem;
-        box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
-        border: none;
-        transition: .25s ease-in-out;
-        align-self: center;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        width: 25vw;
-    
-        &:hover {
-            background: coral;
-            color: white;
-            cursor: pointer;
-        }
-    }
-
 }
-

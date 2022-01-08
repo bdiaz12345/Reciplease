@@ -8,24 +8,6 @@
     background: url('../assets/reciplease-search.png');
     background-size: cover;
 
-    .search-header {
-        display: flex;
-        justify-content: space-between;
-        width: 100vw;
-        height: 10%;
-        padding: 2rem 0 0 0;
-        position: fixed;
-        top: 0;
-        
-        .logout-link {
-            color: #FCDE7B;
-            margin-right: 4rem;
-            margin-top: 4rem;
-            font-size: 2.5rem;
-            text-decoration: underline;
-        }
-    }
-
     .search-form {
         display: flex;
         width: 90rem;

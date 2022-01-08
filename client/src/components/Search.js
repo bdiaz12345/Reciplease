@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/search.scss';
 import axios from 'axios';
 import { Drawer } from 'antd'
 import ReactHtmlParser from 'react-html-parser';
-import { BookOutlined } from '@ant-design/icons';
+
 import Cards from './Cards';
 
 function Search() {
@@ -25,9 +24,10 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
-    const [drawerRecipe, setDrawerRecipe] = useState(openRecipe);
+    const [drawerRecipe, setDrawerRecipe] = useState(openRecipe)
 
     const showDrawer = (e) => {
+        console.log(e)
         setDrawerRecipe({
             id: e.id,
             image: e.image,
@@ -92,10 +92,6 @@ function Search() {
         )
     }
 
-    const logout = () => {
-        localStorage.clear();
-    }
-
     return (
         <>
             <Drawer
@@ -108,29 +104,23 @@ function Search() {
                 <div className="drawer-container">
                     <img className="drawer-recipe-image" src={drawerRecipe.image} alt="recipe"/>
                     <div className="drawer-card-content">
-                        <h1 className="drawer-recipe-title">{drawerRecipe.title}</h1>
+                        <h2 className="drawer-recipe-title">{drawerRecipe.title}</h2>
                         <div className="drawer-recipe-info">
-                            <h3>Prep-time < br />{drawerRecipe.readyInMinutes} Minutes</h3>
-                            <h3>Servings < br />{drawerRecipe.servings}</h3>
-                            <h3>Score < br />{drawerRecipe.spoonacularScore}</h3>
+                            <p>Prep-time < br />{drawerRecipe.readyInMinutes} Minutes</p>
+                            <p>Servings < br />{drawerRecipe.servings}</p>
+                            <p>Score < br />{drawerRecipe.spoonacularScore}</p>
                         </div>
                     </div>
                     <div className='open'>
                         <div className='description'>
                             <h2>Description</h2>
-                            <h3>{ ReactHtmlParser(drawerRecipe.description) }</h3>
+                            <p>{ ReactHtmlParser(drawerRecipe.description) }</p>
                         </div>
                     </div>
                 </div>
             </Drawer>
         <div className="search-content">
-            <div className="search-header">
-                <BookOutlined style={{fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'}}/>
-                <h1 className="landing-title" style={{position: 'relative'}}>Reciplease</h1>
-                <div onClick={logout}>
-                    <Link className="logout-link" to="/">Logout</Link>
-                </div>
-            </div>
+            <h1 className="landing-title" style={{position: 'fixed', top: '1rem'}}>Reciplease</h1>
             <form onSubmit={submitSearch} className="search-form">
                 <input
                     placeholder="Search by Recipe Name, Ingredient"
