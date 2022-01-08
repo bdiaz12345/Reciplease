@@ -28,9 +28,11 @@
         .cookbook-header {
             font-family: 'Rock Salt';
             font-size: 72px;
-            color: white;
-            width: 100%;
+            color: #FCDE7B;
+            width: 80%;
             text-align: center;
+            position: fixed;
+            right: 10%;
         }
 
         .card {
@@ -111,8 +113,9 @@
     .logout-link {
         color: #FCDE7B;
         margin-right: 1.5rem;
-        margin-top: 4rem;
         font-size: 2.5rem;
+        position: fixed;
+        right: .3%;
         text-decoration: underline;
     }
 
@@ -149,7 +152,7 @@
             .cookbook-header {
                 font-family: 'Rock Salt';
                 font-size: 30px;
-                color: white;
+                color: #FCDE7B;
                 width: 60%;
                 position: fixed;
                 top: 1%;
@@ -237,9 +240,9 @@
     
         .logout-link {
             color: #FCDE7B;
-            font-size: 2rem;
+            font-size: 1.5rem;
             position: fixed;
-            top: -2%;
+            top: 4%;
             right: 0;
             text-decoration: underline;
         }
