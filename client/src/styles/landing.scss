@@ -146,3 +146,48 @@ form {
         box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3);
     }
 }
+
+@media (max-width: 400px) {
+    .content {
+        background: url('../assets/reciplease-landing.png');
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0 2rem;
+        background-size: cover;
+    }
+    .landing-title {
+        font-family: 'Rock Salt';
+        font-size: 36px;
+        margin-bottom: 7rem;
+    }
+    .landing-description {
+        font-family: Roboto;
+        font-size: 20px;
+        width: 90%;
+        text-align: center;
+        margin-bottom: 7rem;
+        font-weight: 400;
+    }
+    #cook-button {
+        background: #fcde7b;
+        padding: 2rem 1rem;
+        width: 80vw;
+        font-size: 28px;
+        color: black;
+        border: none;
+        font-weight: 238;
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+        transition: .25s ease-in-out;
+    
+        &:hover {
+            cursor: pointer;
+            background: coral;
+            color: white;
+            box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3);
+        }
+    }
+}
