@@ -81,6 +81,8 @@ function SignUp() {
                     message: err.message,
                     activeClass: "error-modal"
                 })
+
+                console.log({err})
             })
             .finally(() => {
                 setFormValues(initialValues)
@@ -130,7 +132,7 @@ function SignUp() {
                         placeholder='Password'
                     />
                         
-                        <button disabled={disabledBtn} type="submit" className="cookin-button-login">Let's get cook'n</button>
+                        <button  type="submit" className="cookin-button-login">Let's get cook'n</button>
 
                     <p>
                         Already have an account? <Link to="/login">Login here</Link>

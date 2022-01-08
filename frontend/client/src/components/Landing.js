@@ -12,7 +12,7 @@ function Landing() {
         <div className="content">
             <h1 className="landing-title">Reciplease</h1>
             <p className="landing-description">Don't know what to cook next?</p>
-            <button onClick={onSubmit} id="cook-button">Let's get cook'n</button>
+            <button onClick={onSubmit} id='landing-btn'>Let's get cook'n</button>
         </div>
     )
 }
