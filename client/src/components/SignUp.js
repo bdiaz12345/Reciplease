@@ -6,6 +6,8 @@ import {useNavigate, Link} from 'react-router-dom';
 import { Loading3QuartersOutlined } from '@ant-design/icons'
 
 import "../styles/signup.scss";
+import { getUser } from '../actions';
+import { useDispatch } from 'react-redux';
 
 
 
@@ -23,6 +25,8 @@ function SignUp() {
         message: "",
         activeClass: ""
     })
+
+    const dispatch = useDispatch();
     
     const push = useNavigate();
 
@@ -71,6 +75,7 @@ function SignUp() {
                     message: "Success!",
                     activeClass:"success-modal"
                 })
+                dispatch(getUser({username: res.data.username, email: formValues.email}));
                 localStorage.setItem("token", res.data.token)
                 setTimeout(() => {
                     push("/search")

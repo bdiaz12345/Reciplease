@@ -1,12 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/search.scss';
 import axios from 'axios';
-import { Drawer } from 'antd'
+import { Drawer } from 'antd';
+import { BookOutlined } from '@ant-design/icons';
 import ReactHtmlParser from 'react-html-parser';
 
 import Cards from './Cards';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
 
-function Search() {
+function Search(state) {
+
+    console.log('user', state)
+
     let openRecipe = {
         id: '',
         image: '',
@@ -25,6 +32,8 @@ function Search() {
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
     const [drawerRecipe, setDrawerRecipe] = useState(openRecipe)
+
+    const history = useNavigate();
 
     const showDrawer = (e) => {
         console.log(e)
@@ -85,11 +94,23 @@ function Search() {
             results.map(recipe => {
                 if (recipe.id === id) {
                     recipe.liked = !recipe.liked
+                    axios.put('https://reciplease-backend.vercel.app/users/saved_recipes', 
+                    {
+                        email: state.email, 
+                        recipe: recipe
+                    })
+                    .then(res => {
+                        console.log(res);
+                    })
                 }
 
                 return recipe
             })
         )
+    }
+
+    const logout = () => {
+        localStorage.clear();
     }
 
     return (
@@ -120,7 +141,15 @@ function Search() {
                 </div>
             </Drawer>
         <div className="search-content">
-            <h1 className="landing-title" style={{position: 'fixed', top: '1rem'}}>Reciplease</h1>
+            <div className="search-header">
+                <div onClick={() => {history('/cookbook')}}>
+                    <BookOutlined />
+                </div>
+                <h1 className="landing-title">Reciplease</h1>
+                <div className="logout-div" onClick={logout}>
+                    <Link className="logout-link" to="/">Logout</Link>
+                </div>
+            </div>
             <form onSubmit={submitSearch} className="search-form">
                 <input
                     placeholder="Search by Recipe Name, Ingredient"
@@ -138,4 +167,9 @@ function Search() {
     )
 }
 
-export default Search
+const mapStateToProps = state => ({
+    username: state.username,
+    email: state.email
+})
+
+export default connect(mapStateToProps)(Search)

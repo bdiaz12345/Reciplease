@@ -4,14 +4,17 @@ import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
 import loginSchema from '../formSchema/loginSchema';
 import axios from 'axios';
-import "../styles/login.scss"
+import { getUser } from '../actions';
+import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 
 const initialValues = {
     email: '',
     password: ''
 }
 
-function LogIn() {
+function LogIn(state) {
     const [loginValues, setLoginValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState(initialValues);
     const [disables, setDisabled] = useState(true);
@@ -22,14 +25,15 @@ function LogIn() {
 
     const history = useNavigate();
 
+    console.log(state)
+    const dispatch = useDispatch();
+
     useEffect(() => {
         loginSchema.isValid(loginValues)
         .then((valid) => {
             setDisabled(!valid)
         })
     }, [loginValues])
-
-    
 
     const handleFormErrors = (name, value) => {
         Yup.reach(loginSchema,name).validate(value)
@@ -48,7 +52,6 @@ function LogIn() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-
         setSignUpSuccess({
             message: <Loading3QuartersOutlined spin style={loadingIconStyle} />,
             activeClass: signUpSuccess.activeClass
@@ -116,4 +119,8 @@ function LogIn() {
     )
 }
 
-export default LogIn
+const mapStateToProps = state => {
+    return state
+}
+
+export default connect(mapStateToProps, {getUser})(LogIn)
