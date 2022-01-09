@@ -16,7 +16,6 @@ function Cookbook(state) {
     const history = useNavigate();
     
     useEffect(async () => {
-        console.log(JSON.parse(localStorage.getItem('user')))
         const user = JSON.parse(localStorage.getItem('user'))
         dispatch(getUser({email: await user.email, username: await user.username}))
         console.log(state)

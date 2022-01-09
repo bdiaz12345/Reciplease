@@ -14,10 +14,12 @@ import { useDispatch } from 'react-redux'
 function Search(state) {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        dispatch(getUser({email: user.email, username: user.username}))
-    }, [])
+    useEffect(async () => {
+        if (!state.username || !state.email) {
+            const user = JSON.parse(localStorage.getItem('user'))
+            dispatch(getUser({email: await user.email, username: await user.username}))
+        }
+    }, [state])
 
     console.log('user', state)
 
@@ -173,9 +175,8 @@ function Search(state) {
     )
 }
 
-const mapStateToProps = state => ({
-    username: state.username,
-    email: state.email
-})
+const mapStateToProps = state => {
+    return state
+}
 
 export default connect(mapStateToProps)(Search)
