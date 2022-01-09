@@ -72,7 +72,7 @@ function Cookbook(state) {
                                         return (
                                             <div className="recipe-instruction-steps">
                                                 {step.name} <br/>
-                                                Steps: {step.steps.map(x => {
+                                                {step.steps.map(x => {
                                                     return (
                                                         <p>{x.step}</p>
                                                     )
