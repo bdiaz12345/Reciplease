@@ -43,7 +43,7 @@ function LogIn(state) {
             .finally(() => {
                 history('/search')
             })
-            .catch(err => {console.log(err)})
+            .catch(err => {history('/login'); console.log(err)})
     }
 
     // const handleFormErrors = (name, value) => {
