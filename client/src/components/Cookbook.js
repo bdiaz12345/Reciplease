@@ -57,7 +57,7 @@ function Cookbook(state) {
                                             )
                                         })}
                                     </div>
-                                    <h6>Score: {recipe.spoonacularScore}</h6>
+                                    <h6 className="category">Score: {recipe.spoonacularScore}</h6>
                                     <div className="recipe-dish-types">
                                         <h6 className="category">Dish types:</h6> {recipe.dishTypes.map(dish => {
                                             return (
@@ -75,7 +75,7 @@ function Cookbook(state) {
                                                 {step.name} <br/>
                                                 {step.steps.map(x => {
                                                     return (
-                                                        <p>{x.step}</p>
+                                                        <h6 className="category">{x.step}</h6>
                                                     )
                                                 })}
                                             </div>
