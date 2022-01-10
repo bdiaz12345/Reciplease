@@ -72,7 +72,7 @@ function Cookbook(state) {
                                     {recipe.analyzedInstructions.map(step => {
                                         return (
                                             <div className="recipe-instruction-steps">
-                                                {step.name} <br/>
+                                                <h6 className="category">{step.name}</h6> <br/>
                                                 {step.steps.map(x => {
                                                     return (
                                                         <h6 className="category">{x.step}</h6>
