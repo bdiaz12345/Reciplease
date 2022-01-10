@@ -86,8 +86,8 @@ function Search(state) {
                         likedRecipe = likedRecipe.filter(x => {
                             return x.id !== recipe.id
                         })
-                        setResults(likedRecipe);
                     })
+                    setResults(likedRecipe);
                 })
             })
             .catch(err => {
