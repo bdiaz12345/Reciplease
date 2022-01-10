@@ -125,15 +125,20 @@
         .drawer-recipe-info {
             display: flex;
             justify-content: space-between;
+            font-size: 2rem;
             width: 75%;
             margin-top: 6%;
 
-            .description {
-                font-size: 2rem;
-                text-align: center;
-                line-height: 1.5;
-            }
         }
+    }
+    .open {
+        .description {
+            margin-top: 2rem;
+            font-size: 2rem;
+            text-align: flex-start;
+            line-height: 1.5;
+        }
+
     }
 }
 
@@ -254,7 +259,7 @@
             padding-top: 2%;
     
             .drawer-recipe-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
                 width: 70%;
                 text-align: center;
             }
@@ -264,7 +269,7 @@
                 justify-content: space-between;
                 width: 100%;
                 margin-top: 6%;
-                font-size: 1rem;
+                font-size: 2rem;
     
                 .description {
                     font-size: 1rem;

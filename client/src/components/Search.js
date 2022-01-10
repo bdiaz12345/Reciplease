@@ -162,9 +162,9 @@ function Search(state) {
                         </div>
                     </div>
                     <div className='open'>
-                        <div className='description'>
-                            <h2>Description</h2>
-                            <h3>{ ReactHtmlParser(drawerRecipe.description) }</h3>
+                        <div className="description">
+                            <h2 className="description-header">Description</h2>
+                            <h3 className="description-summary">{ ReactHtmlParser(drawerRecipe.description) }</h3>
                         </div>
                     </div>
                 </div>
