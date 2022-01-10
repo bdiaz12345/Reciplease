@@ -110,6 +110,12 @@
             .recipe-instructions {
                 display: flex;
                 align-self: flex-start;
+
+                .recipe-instruction-steps {
+                    .category {
+                        font-size: 1.5rem;
+                    }
+                }
             }
         }
         .cookbook-delete-button {
