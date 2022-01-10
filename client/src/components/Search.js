@@ -8,8 +8,18 @@ import { BookOutlined } from '@ant-design/icons';
 import Cards from './Cards';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import { getUser } from '../actions';
+import { useDispatch } from 'react-redux'
 
 function Search(state) {
+    const dispatch = useDispatch();
+
+    useEffect(async () => {
+        if (!state.username || !state.email) {
+            const user = JSON.parse(localStorage.getItem('user'))
+            dispatch(getUser({email: await user.email, username: await user.username}))
+        }
+    }, [state])
 
     console.log('user', state)
 
@@ -30,6 +40,7 @@ function Search(state) {
     const [searchValue, setSearchValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
+    const [savedRecipes, setSavedRecipes] = useState([]);
     const [drawerRecipe, setDrawerRecipe] = useState(openRecipe);
 
     const history = useNavigate();
@@ -60,13 +71,24 @@ function Search(state) {
 
         axios
             .post('https://reciplease-backend.vercel.app/recipe', {recipe: searchValue})
-            .then(res => {
-                const likedRecipe = res.data.map(recipe => {
+            .then(async (res) => {
+                let likedRecipe = res.data.map(recipe => {
                     recipe.open = false;
                     recipe.liked = false;
                     return recipe
                 })
-                setResults(likedRecipe)
+                console.log('before', likedRecipe)
+                const user = JSON.parse(localStorage.getItem('user'))
+                axios.post('https://reciplease-backend.vercel.app/users/saved_recipes', {email: await user.email}).then(response => {
+                    console.log('saved recipes', response.data)
+                    setSavedRecipes(response.data)
+                    response.data.map(recipe => {
+                        likedRecipe = likedRecipe.filter(x => {
+                            return x.id !== recipe.id
+                        })
+                    })
+                    setResults(likedRecipe);
+                })
             })
             .catch(err => {
                 console.log({err})
@@ -88,23 +110,32 @@ function Search(state) {
     }
 
     const likedRecipeHandler = (id) => {
-        setResults(
-            results.map(recipe => {
-                if (recipe.id === id) {
-                    recipe.liked = !recipe.liked
-                    axios.put('https://reciplease-backend.vercel.app/users/saved_recipes', 
-                    {
-                        email: state.email, 
-                        recipe: recipe
-                    })
-                    .then(res => {
-                        console.log(res);
-                    })
-                }
 
-                return recipe
-            })
-        )
+        let recipeResults = results
+        
+        results.map(recipe => {
+            if (recipe.id === id) {
+                recipe.liked = !recipe.liked
+                axios.put('https://reciplease-backend.vercel.app/users/saved_recipes', 
+                {
+                    email: state.email, 
+                    recipe: recipe
+                })
+                .then(res => {
+                    console.log(res);
+                })
+            }
+
+            return recipe
+        })
+
+        recipeResults = recipeResults.filter(recipe => {
+            return recipe.id !== id
+        })
+
+        setResults(recipeResults)
+
+        
     }
 
     const logout = () => {
@@ -118,7 +149,7 @@ function Search(state) {
                 placement="right"
                 onClose={onClose}
                 visible={visible}
-                width="50vw"
+                width={window.matchMedia("(max-width: 500px)").matches ? '100vw' : '50vw'}
             >
                 <div className="drawer-container">
                     <img className="drawer-recipe-image" src={drawerRecipe.image} alt="recipe"/>
@@ -165,9 +196,8 @@ function Search(state) {
     )
 }
 
-const mapStateToProps = state => ({
-    username: state.username,
-    email: state.email
-})
+const mapStateToProps = state => {
+    return state
+}
 
 export default connect(mapStateToProps)(Search)

@@ -75,8 +75,9 @@ function SignUp() {
                     message: "Success!",
                     activeClass:"success-modal"
                 })
-                dispatch(getUser({username: res.data.username, email: formValues.email}));
-                localStorage.setItem("token", res.data.token)
+                dispatch(getUser({username: formValues.username, email: formValues.email}));
+                localStorage.setItem('user', JSON.stringify({username: formValues.username, email: formValues.email}))
+                localStorage.setItem("token", JSON.stringify(res.data.token))
                 setTimeout(() => {
                     push("/search")
                 }, 2000)
