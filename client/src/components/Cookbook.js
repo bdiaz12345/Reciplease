@@ -2,17 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import ReactHtmlParser from 'react-html-parser';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import '../styles/cookbook.scss'
 import { SearchOutlined } from '@ant-design/icons'
+import { getUser } from '../actions/index'
 
 function Cookbook(state) {
+    const dispatch = useDispatch();
+
+    
     const [savedRecipes, setSavedRecipes] = useState([]);
-
+    
     const history = useNavigate();
-
-    useEffect(() => {
-        axios.post('https://reciplease-backend.vercel.app/users/saved_recipes', {email: state.email}).then(res => {
+    
+    useEffect(async () => {
+        const user = JSON.parse(localStorage.getItem('user'))
+        dispatch(getUser({email: await user.email, username: await user.username}))
+        console.log(state)
+        axios.post('https://reciplease-backend.vercel.app/users/saved_recipes', {email: await user.email}).then(res => {
             console.log('saved recipes', res.data)
             setSavedRecipes(res.data)
         })
@@ -33,7 +40,7 @@ function Cookbook(state) {
         <>
             <div className="cookbook-content">
                 <div onClick={() => {history('/search')}}>
-                    <SearchOutlined style={window.matchMedia("(min-width: 768px").matches ? {fontSize: '48px', color: 'coral', cursor: 'pointer', marginLeft: '3rem', marginTop: '1rem'} : {fontSize: '30px', color: 'coral', cursor: 'pointer', position: 'relative', top: '-10%'}}/>
+                    <SearchOutlined style={window.matchMedia("(min-width: 768px").matches ? {fontSize: '48px', color: '#FCDE7B', cursor: 'pointer', position: 'fixed', marginLeft: '3rem', marginTop: '1rem'} : {fontSize: '30px', color: '#FCDE7B', cursor: 'pointer', position: 'fixed', top: '3.5%'}}/>
                 </div>
                 <div className="card-container">
                 <h1 className="cookbook-header">Saved Recipes</h1>

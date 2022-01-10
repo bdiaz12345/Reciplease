@@ -24,13 +24,17 @@
         overflow-y: scroll;
         -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
         scrollbar-width: none;  /* Hides Scrollbar for Firefox */
+        margin-top: 10rem;
         
         .cookbook-header {
             font-family: 'Rock Salt';
             font-size: 72px;
-            color: white;
-            width: 100%;
+            color: #FCDE7B;
+            width: 80%;
             text-align: center;
+            position: fixed;
+            right: 10%;
+            top: 2%;
         }
 
         .card {
@@ -111,8 +115,10 @@
     .logout-link {
         color: #FCDE7B;
         margin-right: 1.5rem;
-        margin-top: 4rem;
         font-size: 2.5rem;
+        position: fixed;
+        top: 3%;
+        right: .3%;
         text-decoration: underline;
     }
 
@@ -121,11 +127,11 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .cookbook-content {
         height: 100vh;
         width: 100%;
-        padding: 10rem 1rem 2rem 1rem;
+        padding: 12rem 1rem 2rem 1rem;
         background: url('../assets/cookbook.jpeg');
         background-size: cover;
         display: flex;
@@ -145,21 +151,22 @@
             overflow-y: scroll;
             -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
             scrollbar-width: none;  /* Hides Scrollbar for Firefox */
+            margin-top: 0;
             
             .cookbook-header {
                 font-family: 'Rock Salt';
                 font-size: 30px;
-                color: white;
+                color: #FCDE7B;
                 width: 60%;
                 position: fixed;
-                top: 0;
+                top: 1%;
                 left: 20%;
                 text-align: center;
             }
     
             .card {
                 background: rgba(white, .5);
-                width: 80vw;
+                width: 90vw;
                 padding: 2rem;
                 border-radius: .5rem;
                 display: flex;
@@ -237,9 +244,9 @@
     
         .logout-link {
             color: #FCDE7B;
-            font-size: 2rem;
+            font-size: 1.5rem;
             position: fixed;
-            top: -2%;
+            top: 4%;
             right: 0;
             text-decoration: underline;
         }

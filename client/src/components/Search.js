@@ -9,8 +9,18 @@ import ReactHtmlParser from 'react-html-parser';
 import Cards from './Cards';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import { getUser } from '../actions';
+import { useDispatch } from 'react-redux'
 
 function Search(state) {
+    const dispatch = useDispatch();
+
+    useEffect(async () => {
+        if (!state.username || !state.email) {
+            const user = JSON.parse(localStorage.getItem('user'))
+            dispatch(getUser({email: await user.email, username: await user.username}))
+        }
+    }, [state])
 
     console.log('user', state)
 
@@ -120,7 +130,7 @@ function Search(state) {
                 placement="right"
                 onClose={onClose}
                 visible={visible}
-                width="50vw"
+                width={window.matchMedia("(max-width: 500px)").matches ? '100vw' : '50vw'}
             >
                 <div className="drawer-container">
                     <img className="drawer-recipe-image" src={drawerRecipe.image} alt="recipe"/>
@@ -167,9 +177,8 @@ function Search(state) {
     )
 }
 
-const mapStateToProps = state => ({
-    username: state.username,
-    email: state.email
-})
+const mapStateToProps = state => {
+    return state
+}
 
 export default connect(mapStateToProps)(Search)

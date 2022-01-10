@@ -47,7 +47,7 @@ function Cards({recipes, loading, likedRecipeHandler, moreInfoHandler, showDrawe
                                         <StarFilled style={starIconStyle} onClick={() => likedRecipeHandler(id)} />) : (
                                         <StarOutlined style={starIconStyle} onClick={() => likedRecipeHandler(id)} /> ) 
                                     }
-                                    <button onClick={() => {moreInfoHandler(id); showDrawer(recipe);}}>More Info</button>
+                                    <button onClick={() => {moreInfoHandler(id); showDrawer(recipe); console.log(recipe)}}>More Info</button>
                                 </div>
                             </div>
                     )

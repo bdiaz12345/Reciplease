@@ -45,9 +45,23 @@ function LogIn(state) {
             })
     }
 
+    
     const handleChange = (e) => {
         handleFormErrors(e.target.name, e.target.value)
         setLoginValues({...loginValues, [e.target.name]: e.target.value})
+    }
+    
+    const onSubmit = (e) => {
+        e.preventDefault()
+        axios.post('https://reciplease-backend.vercel.app/users/login', loginValues)
+            .then(res => {
+                console.log('congratulations you fuck, welcum to our website af', res)
+                dispatch(getUser({username: res.data.username, email: loginValues.email}));
+                localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email}))
+                localStorage.setItem('token', res.data.token)
+                history('/search');
+            })
+            .catch(err => {history('/login'); console.log(err)})
     }
 
     const submitHandler = (e) => {
@@ -93,7 +107,7 @@ function LogIn(state) {
                 {formErrors.password && <p className='errors'>{formErrors.password}</p>}
 
                 {signUpSuccess && <p className={signUpSuccess.activeClass}>{signUpSuccess.message}</p>}
-                <form onSubmit={submitHandler}>
+                <form onSubmit={onSubmit}>
                     <input
                         className="login-input"
                         type='text'
@@ -118,6 +132,7 @@ function LogIn(state) {
         </div>
     )
 }
+
 
 const mapStateToProps = state => {
     return state
