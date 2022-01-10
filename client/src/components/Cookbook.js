@@ -27,7 +27,6 @@ function Cookbook(state) {
 
     const onDelete = (id) => {
         axios.delete(`https://reciplease-backend.vercel.app/users/saved_recipes/${state.email}/${id}`).then(res => {
-            console.log(res)
             setSavedRecipes(res.data)
         })
     }

@@ -36,7 +36,6 @@ function LogIn(state) {
         e.preventDefault()
         axios.post('https://reciplease-backend.vercel.app/users/login', loginValues)
             .then(res => {
-                console.log('congratulations you fuck, welcum to our website af', res)
                 dispatch(getUser({username: res.data.username, email: loginValues.email}));
                 localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email}))
             })
