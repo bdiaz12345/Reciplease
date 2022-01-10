@@ -53,19 +53,6 @@ function LogIn(state) {
     
     const onSubmit = (e) => {
         e.preventDefault()
-        axios.post('https://reciplease-backend.vercel.app/users/login', loginValues)
-            .then(res => {
-                console.log('congratulations you fuck, welcum to our website af', res)
-                dispatch(getUser({username: res.data.username, email: loginValues.email}));
-                localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email}))
-                localStorage.setItem('token', res.data.token)
-                history('/search');
-            })
-            .catch(err => {history('/login'); console.log(err)})
-    }
-
-    const submitHandler = (e) => {
-        e.preventDefault()
         setSignUpSuccess({
             message: <Loading3QuartersOutlined spin style={loadingIconStyle} />,
             activeClass: signUpSuccess.activeClass
@@ -78,19 +65,21 @@ function LogIn(state) {
                     activeClass: "success-modal"
                 })
 
-                window.localStorage.setItem('token', res.data.token)
+                dispatch(getUser({username: res.data.username, email: loginValues.email}));
+                localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email}))
+                localStorage.setItem('token', res.data.token)
 
                 setTimeout(() => {
                     history('/search');
                 }, 1500)
-                })
+            })
 
-                .catch(err => {
-                    setSignUpSuccess({
-                        message: err.response.data.message,
-                        activeClass: "error-modal"
-                    })
+            .catch(err => {
+                setSignUpSuccess({
+                    message: err.response.data.message,
+                    activeClass: "error-modal"
                 })
+            })
     }
 
     const loadingIconStyle = {
@@ -124,7 +113,8 @@ function LogIn(state) {
                     />
                     <button disabled={disables} className="login-btn">Let's get cook'n</button>
                     <p className='options'>
-                        <Link to='/signup' className='options-link'>Sign Up</Link> or <Link to='/' className='options-link'>Learn More</Link>
+                        Don't have an account? <Link to='/signup' className='options-link'>Sign up here</Link> <br />
+                        <Link to='/forgot' className='options-link'>Forgot password?</Link>
                     </p>
                 </form>
             </div>
