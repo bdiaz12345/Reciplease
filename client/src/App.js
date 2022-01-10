@@ -3,11 +3,11 @@ import { Route, Routes } from 'react-router-dom';
 
 import ForgotPassword from './components/ForgotPassword';
 import AuthRoute from './components/AuthRoute';
-import Landing from './components/Landing'
-import LogIn from './components/LogIn'
-import Search from './components/Search'
-import SignUp from './components/SignUp'
-import Cookbook from './components/Cookbook'
+import Landing from './components/Landing';
+import LogIn from './components/LogIn';
+import Search from './components/Search';
+import SignUp from './components/SignUp';
+import Cookbook from './components/Cookbook';
 
 import './styles/app.scss';
 
@@ -23,8 +23,20 @@ function App() {
             <AuthRoute>
               <Search />
             </AuthRoute>} />
-        <Route path="cookbook" element={<Cookbook/>} />
-        <Route path="forgot" element={<ForgotPassword />} />
+        <Route 
+          path="cookbook" 
+          element={
+            <AuthRoute>
+              <Cookbook/>
+            </AuthRoute>
+            } />
+        <Route 
+          path="forgot" 
+          element={
+            // <AuthRoute>
+              <ForgotPassword />
+            // {/* </AuthRoute> */}
+          } />
     </Routes>
   );
 }
