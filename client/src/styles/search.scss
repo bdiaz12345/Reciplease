@@ -21,32 +21,26 @@
             .anticon-book {
                 font-size: 48px;
                 color: #FCDE7B;
-                position: fixed;
-                top: 3%;
-                left: 2%;
+                margin: 3rem 0 0 2rem;
                 transition: .25s ease-in-out;
 
                 &:hover {
                     cursor: pointer;
                     color: coral;
-                    font-size: 56px;
                 }
             }
         }
         .landing-title {
-            position: fixed;
-            left: 38%;
             color: #FCDE7B;
         }
 
 
         .logout-div {
+            margin-top: 3rem;
             .logout-link {
                 color: #FCDE7B;
                 font-size: 2.5rem;
-                position: fixed;
-                top: 3%;
-                right: 2%;
+                margin-right: 2rem;
                 text-decoration: underline;
             }
         }
@@ -125,15 +119,20 @@
         .drawer-recipe-info {
             display: flex;
             justify-content: space-between;
+            font-size: 2rem;
             width: 75%;
             margin-top: 6%;
 
-            .description {
-                font-size: 2rem;
-                text-align: center;
-                line-height: 1.5;
-            }
         }
+    }
+    .open {
+        .description {
+            margin-top: 2rem;
+            font-size: 2rem;
+            text-align: flex-start;
+            line-height: 1.5;
+        }
+
     }
 }
 
@@ -153,35 +152,29 @@
             justify-content: space-between;
             width: 100vw;
             height: 10%;
-            position: absolute;
             margin-top: 2rem;
 
             div {
                 .anticon-book {
                     font-size: 25px;
-                    margin-left: 1rem;
-                    position: fixed;
-                    top: 5%;
-                    left: 0;
+                    margin: 1.5rem 0 0 1rem;
                 }
             }
 
             .landing-title {
-                margin-left: 2rem;
-                position: fixed;
-                top: 3%;
-                left: 13%;
+                margin-left: 4rem;
+                width: 70vw;
             }
             
             .logout-div {
-                width: 10%;
+                width: 10vw;
                 .logout-link {
                     color: #FCDE7B;
-                    position: fixed;
-                    top: 5.5%;
-                    right: 2%;
                     font-size: 1.5rem;
                     text-decoration: underline;
+                    position: relative;
+                    right: 50%;
+                    top: -40%;
                 }
             }
         }
@@ -254,7 +247,7 @@
             padding-top: 2%;
     
             .drawer-recipe-title {
-                font-size: 1.5rem;
+                font-size: 2rem;
                 width: 70%;
                 text-align: center;
             }
@@ -264,7 +257,7 @@
                 justify-content: space-between;
                 width: 100%;
                 margin-top: 6%;
-                font-size: 1rem;
+                font-size: 2rem;
     
                 .description {
                     font-size: 1rem;

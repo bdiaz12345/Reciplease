@@ -1,13 +1,43 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
+
+import schema from '../formSchema/forgotPasswordSchema';
 
 import '../styles/forgot.scss'
 
+const initialValue = {
+    email: "",
+}
+
 function ForgotPassword() {
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState(initialValue);
+    const [formError, setFormError] = useState(initialValue);
+
+    const inputErrorHandler = ((name, value) => {
+        yup
+            .reach(schema, name)
+            .validate(value)
+            .then(() => {
+                setFormError({
+                    ...formError,
+                    [name]: "",
+                })
+            })
+            .catch(err => {
+                setFormError({
+                    ...formError,
+                    [name]: err.errors[0]
+                })
+            })
+
+    })
 
     const inputChangeListener = (e) => {
-        setInputValue(e.target.value)
+        setInputValue({
+            ...inputValue,
+            [e.target.name]: e.target.value})
+        inputErrorHandler(e.target.name, e.target.value)
     }
 
     const submitHandler = (e) => {
@@ -28,9 +58,10 @@ function ForgotPassword() {
                         name='email'
                         placeholder="Email"
                         className="forgot-input"
-                        value={inputValue}
+                        value={inputValue.email}
                         onChange={inputChangeListener}
                     />
+                    {/* {formError && <p>{formError}</p>} */}
                     <button type="submit" className="forgot-btn">Verify</button>
                 </form>
                 <Link to="/login" className='return-login'>Return to Login</Link>

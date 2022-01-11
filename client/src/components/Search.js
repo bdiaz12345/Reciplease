@@ -41,7 +41,8 @@ function Search(state) {
     const [searchValue, setSearchValue] = useState('');
     const [loading, setLoading] = useState(false);
     const [visible, setVisible] = useState(false);
-    const [drawerRecipe, setDrawerRecipe] = useState(openRecipe)
+    const [savedRecipes, setSavedRecipes] = useState([]);
+    const [drawerRecipe, setDrawerRecipe] = useState(openRecipe);
 
     const history = useNavigate();
 
@@ -72,13 +73,24 @@ function Search(state) {
 
         axios
             .post('https://reciplease-backend.vercel.app/recipe', {recipe: searchValue})
-            .then(res => {
-                const likedRecipe = res.data.map(recipe => {
+            .then(async (res) => {
+                let likedRecipe = res.data.map(recipe => {
                     recipe.open = false;
                     recipe.liked = false;
                     return recipe
                 })
-                setResults(likedRecipe)
+                console.log('before', likedRecipe)
+                const user = JSON.parse(localStorage.getItem('user'))
+                axios.post('https://reciplease-backend.vercel.app/users/saved_recipes', {email: await user.email}).then(response => {
+                    console.log('saved recipes', response.data)
+                    setSavedRecipes(response.data)
+                    response.data.map(recipe => {
+                        likedRecipe = likedRecipe.filter(x => {
+                            return x.id !== recipe.id
+                        })
+                    })
+                    setResults(likedRecipe);
+                })
             })
             .catch(err => {
                 console.log({err})
@@ -100,23 +112,32 @@ function Search(state) {
     }
 
     const likedRecipeHandler = (id) => {
-        setResults(
-            results.map(recipe => {
-                if (recipe.id === id) {
-                    recipe.liked = !recipe.liked
-                    axios.put('https://reciplease-backend.vercel.app/users/saved_recipes', 
-                    {
-                        email: state.email, 
-                        recipe: recipe
-                    })
-                    .then(res => {
-                        console.log(res);
-                    })
-                }
 
-                return recipe
-            })
-        )
+        let recipeResults = results
+        
+        results.map(recipe => {
+            if (recipe.id === id) {
+                recipe.liked = !recipe.liked
+                axios.put('https://reciplease-backend.vercel.app/users/saved_recipes', 
+                {
+                    email: state.email, 
+                    recipe: recipe
+                })
+                .then(res => {
+                    console.log(res);
+                })
+            }
+
+            return recipe
+        })
+
+        recipeResults = recipeResults.filter(recipe => {
+            return recipe.id !== id
+        })
+
+        setResults(recipeResults)
+
+        
     }
 
     const logout = () => {
@@ -143,9 +164,9 @@ function Search(state) {
                         </div>
                     </div>
                     <div className='open'>
-                        <div className='description'>
-                            <h2>Description</h2>
-                            <p>{ ReactHtmlParser(drawerRecipe.description) }</p>
+                        <div className="description">
+                            <h2 className="description-header">Description</h2>
+                            <h3 className="description-summary">{ ReactHtmlParser(drawerRecipe.description) }</h3>
                         </div>
                     </div>
                 </div>

@@ -17,6 +17,8 @@ function App() {
         <Route exact path="/" element={<Landing/>} />
         <Route path="login" element={<LogIn/>} />
         <Route path="signup" element={<SignUp/>} />
+        <Route path="forgot" element={<ForgotPassword />} />
+
         <Route 
           path="search" 
           element={
@@ -30,13 +32,6 @@ function App() {
               <Cookbook/>
             </AuthRoute>
             } />
-        <Route 
-          path="forgot" 
-          element={
-            // <AuthRoute>
-              <ForgotPassword />
-            // {/* </AuthRoute> */}
-          } />
     </Routes>
   );
 }

@@ -55,6 +55,7 @@
 
             .recipe-title {
                 font-size: 3rem;
+                margin: 1.5rem 0;
             }
 
             .tags {
@@ -62,9 +63,17 @@
                 flex-direction: column;
                 width: 100%;
 
+                .category {
+                    font-size: 1.5rem;
+                }
+
                 .recipe-diets {
                     display: flex;
-                    p {
+                    .category {
+                        font-size: 1.5rem;
+                    }
+                    .category-tag {
+                        font-size: 1.5rem;
                         margin: 0 1rem;
                         color: royalblue;
                     }
@@ -72,7 +81,11 @@
 
                 .recipe-dish-types {
                     display: flex;
-                    p {
+                    .category {
+                        font-size: 1.5rem;
+                    }
+                    .category-tag {
+                        font-size: 1.5rem;
                         margin: 0 1rem;
                         color: coral;
                     }
@@ -83,13 +96,25 @@
                 font-size: 2rem;
                 margin: 2rem 0;
                 .description-data {
+                    margin-top: 2rem;
                     font-size: 14px;
                 }
             }
 
+            .instructions-header {
+                font-size: 2rem;
+                display: flex;
+                align-self: flex-start;
+            }
+
             .recipe-instructions {
-                .instructions-header {
-                    font-size: 2rem;
+                display: flex;
+                align-self: flex-start;
+
+                .recipe-instruction-steps {
+                    .category {
+                        font-size: 1.5rem;
+                    }
                 }
             }
         }
@@ -103,6 +128,8 @@
             margin-top: 3rem;
             margin-bottom: 3rem;
             width: 25vw;
+            padding: 2rem 3rem;
+            border-radius: .5rem;
 
             &:hover {
                 background: coral;
@@ -183,12 +210,17 @@
     
                 .recipe-title {
                     font-size: 2rem;
+                    margin-top: 1.5rem;
                 }
     
                 .tags {
                     display: flex;
                     flex-direction: column;
                     width: 100%;
+
+                    .category {
+                        font-size: 1.5rem;
+                    }
     
                     .recipe-diets {
                         display: flex;
@@ -210,17 +242,17 @@
                 }
     
                 .description {
-                    font-size: 2rem;
+                    font-size: 1.5rem;
                     margin: 2rem 0;
                     .description-data {
                         font-size: 14px;
                     }
                 }
     
-                .recipe-instructions {
-                    .instructions-header {
-                        font-size: 2rem;
-                    }
+                .instructions-header {
+                    font-size: 1.5rem;
+                    display: flex;
+                    align-self: flex-start;
                 }
             }
             .cookbook-delete-button {

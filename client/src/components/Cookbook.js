@@ -27,7 +27,6 @@ function Cookbook(state) {
 
     const onDelete = (id) => {
         axios.delete(`https://reciplease-backend.vercel.app/users/saved_recipes/${state.email}/${id}`).then(res => {
-            console.log(res)
             setSavedRecipes(res.data)
         })
     }
@@ -51,30 +50,31 @@ function Cookbook(state) {
                                 <h1 className="recipe-title">{recipe.title}</h1>
                                 <div className="tags">
                                     <div className="recipe-diets">
-                                        Diets: {recipe.diets.map(diet => {
+                                        <h6 className="category">Diets:</h6> {recipe.diets.map(diet => {
                                             return (
-                                                <p>{diet}</p>
+                                                <p className="category-tag">{diet}</p>
                                             )
                                         })}
                                     </div>
-                                    <h6>Score: {recipe.spoonacularScore}</h6>
+                                    <h6 className="category">Score: {recipe.spoonacularScore}</h6>
                                     <div className="recipe-dish-types">
-                                        Dish types: {recipe.dishTypes.map(dish => {
+                                        <h6 className="category">Dish types:</h6> {recipe.dishTypes.map(dish => {
                                             return (
-                                                <p>{dish}</p>
+                                                <p className="category-tag">{dish}</p>
                                             )
                                         })}
                                     </div>
                                 </div>
                                 <h1 className="description">Description:<p className="description-data">{ReactHtmlParser(recipe.summary)}</p></h1>
+                                <h1 className="instructions-header">Instructions:</h1>
                                 <div className="recipe-instructions">
-                                    <h1 className="instructions-header">Instructions:</h1> {recipe.analyzedInstructions.map(step => {
+                                    {recipe.analyzedInstructions.map(step => {
                                         return (
                                             <div className="recipe-instruction-steps">
-                                                {step.name} <br/>
-                                                Steps: {step.steps.map(x => {
+                                                <h6 className="category">{step.name}</h6> <br/>
+                                                {step.steps.map(x => {
                                                     return (
-                                                        <p>{x.step}</p>
+                                                        <h6 className="category">{x.step}</h6>
                                                     )
                                                 })}
                                             </div>
