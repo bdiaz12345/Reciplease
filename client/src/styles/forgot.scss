@@ -87,4 +87,22 @@
             border-bottom: 2px solid #f17012;
         }
     }
+
+    .email-sent {
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        svg {
+            color: #64bc26;
+            font-size: 9rem;
+            padding: 10%;
+            width: 100%;
+            border: 5px solid #64bc26;
+            border-radius: 50px;
+        }
+    }
 }

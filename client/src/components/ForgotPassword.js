@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { CheckOutlined } from '@ant-design/icons'
 
 import schema from '../formSchema/forgotPasswordSchema';
 
@@ -9,6 +10,8 @@ import '../styles/forgot.scss'
 const initialValue = {
     email: "",
 }
+
+
 
 function ForgotPassword() {
     const [inputValue, setInputValue] = useState(initialValue);
@@ -55,28 +58,41 @@ function ForgotPassword() {
         console.log('handler initiated', inputValue)
 
         setInputValue(initialValue)
+
+        setEmailSent(true)
     }
 
     return (
         <div className="forgot-screen">
             <div className="forgot-wrapper">
-                <h1>Forgot Password</h1>
-                <p>Please provide your email address below so we can verify your account</p>
+                { !emailSent ? ( 
+                <>
+                    <h1>Forgot Password</h1>
+                    <p>Please provide your email address below so we can verify your account</p>
 
-                <form onSubmit={submitHandler}>
-                    <input 
-                        type='text'
-                        name='email'
-                        placeholder="Email"
-                        className="forgot-input"
-                        value={inputValue.email}
-                        onChange={inputChangeListener}
-                    />
-                    {formError.email && <p className="forgot-validation-error">{formError.email}</p>}
-                    <button type="submit" disabled={disabledBtn} className="forgot-btn">Verify</button>
-                </form>
-                <Link to="/login" className='return-login'>Return to Login</Link>
-                <p>Don't have an account? <Link to='/signup' className='return-login'>Create one here</Link></p>
+                    <form onSubmit={submitHandler}>
+                        <input 
+                            type='text'
+                            name='email'
+                            placeholder="Email"
+                            className="forgot-input"
+                            value={inputValue.email}
+                            onChange={inputChangeListener}
+                        />
+                        {formError.email && <p className="forgot-validation-error">{formError.email}</p>}
+                        <button type="submit" disabled={disabledBtn} className="forgot-btn">Verify</button>
+                    </form>
+                    <Link to="/login" className='return-login'>Return to Login</Link>
+                    <p>Don't have an account? <Link to='/signup' className='return-login'>Create one here</Link></p>
+                </>
+                )
+                : 
+                    <div className='email-sent'>
+                        <CheckOutlined />
+                        <h1>Check Your Email</h1>
+                        <p>Please check the email address associated with your account for instructions to reset your password.</p>
+                    </div>  
+                }
             </div>
         </div>
     )
