@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 
@@ -13,6 +13,15 @@ const initialValue = {
 function ForgotPassword() {
     const [inputValue, setInputValue] = useState(initialValue);
     const [formError, setFormError] = useState(initialValue);
+    const [disabledBtn, setDisabledBtn] = useState(true)
+    const [emailSent, setEmailSent] = useState(false);
+
+    useEffect(() => {
+        schema.isValid(inputValue)
+        .then(valid => {
+            setDisabledBtn(!valid)
+        })
+    }, [inputValue])
 
     const inputErrorHandler = ((name, value) => {
         yup
@@ -44,6 +53,8 @@ function ForgotPassword() {
         e.preventDefault();
 
         console.log('handler initiated', inputValue)
+
+        setInputValue(initialValue)
     }
 
     return (
@@ -62,7 +73,7 @@ function ForgotPassword() {
                         onChange={inputChangeListener}
                     />
                     {formError.email && <p className="forgot-validation-error">{formError.email}</p>}
-                    <button type="submit" className="forgot-btn">Verify</button>
+                    <button type="submit" disabled={disabledBtn} className="forgot-btn">Verify</button>
                 </form>
                 <Link to="/login" className='return-login'>Return to Login</Link>
                 <p>Don't have an account? <Link to='/signup' className='return-login'>Create one here</Link></p>
