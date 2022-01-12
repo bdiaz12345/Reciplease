@@ -61,7 +61,7 @@ function ForgotPassword() {
                         value={inputValue.email}
                         onChange={inputChangeListener}
                     />
-                    {/* {formError && <p>{formError}</p>} */}
+                    {formError.email && <p className="forgot-validation-error">{formError.email}</p>}
                     <button type="submit" className="forgot-btn">Verify</button>
                 </form>
                 <Link to="/login" className='return-login'>Return to Login</Link>
