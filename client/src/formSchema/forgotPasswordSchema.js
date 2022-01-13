@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const forgotPasswordSchema = Yup.object().shape({
+export const forgotPasswordSchema = Yup.object().shape({
     email:
         Yup 
             .string()
@@ -8,4 +8,10 @@ const forgotPasswordSchema = Yup.object().shape({
             .required("Email is required")
 })
 
-export default forgotPasswordSchema
+export const resetPasswordSchema = Yup.object().shape({
+    password: 
+        Yup
+            .string()
+            .required("Password is required")
+            .min(6, "Your password must be at least six characters long")
+})

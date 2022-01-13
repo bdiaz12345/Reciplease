@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { CheckOutlined } from '@ant-design/icons'
 
-import schema from '../formSchema/forgotPasswordSchema';
+import {forgotPasswordSchema} from '../formSchema/forgotPasswordSchema';
 
 import '../styles/forgot.scss'
 
@@ -20,7 +20,7 @@ function ForgotPassword() {
     const [emailSent, setEmailSent] = useState(false);
 
     useEffect(() => {
-        schema.isValid(inputValue)
+        forgotPasswordSchema.isValid(inputValue)
         .then(valid => {
             setDisabledBtn(!valid)
         })
@@ -28,7 +28,7 @@ function ForgotPassword() {
 
     const inputErrorHandler = ((name, value) => {
         yup
-            .reach(schema, name)
+            .reach(forgotPasswordSchema, name)
             .validate(value)
             .then(() => {
                 setFormError({
