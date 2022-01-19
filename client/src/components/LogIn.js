@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Loading3QuartersOutlined } from '@ant-design/icons'
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
-import loginSchema from '../formSchema/loginSchema';
-import axios from 'axios';
-import { getUser } from '../actions';
 import { connect } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
+
+import loginSchema from '../formSchema/loginSchema';
+import { getUser } from '../actions';
 
 
 const initialValues = {

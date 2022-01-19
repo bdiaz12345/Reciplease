@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { CheckOutlined } from '@ant-design/icons'
+import { CheckOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
 import {forgotPasswordSchema} from '../formSchema/forgotPasswordSchema';
 
@@ -55,11 +56,13 @@ function ForgotPassword() {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        console.log('handler initiated', inputValue)
-
-        setInputValue(initialValue)
-
-        setEmailSent(true)
+        axios.post('https://reciplease-backend.vercel.app/users/forgot-password', inputValue)
+            .then(res => {
+                console.log(res)
+                setEmailSent(true)
+            })
+            .catch(err => console.log({err}))
+            .finally(() => setInputValue(initialValue))
     }
 
     return (
