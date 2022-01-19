@@ -80,6 +80,7 @@
             color: black;
             transition: .25s ease-in-out;
             cursor: pointer;
+            padding: 1rem 0;
 
             &:hover {
                 background: coral;
@@ -87,9 +88,16 @@
             }
         }
     }
-    .options, a {
+    .options {
         font-size: 2rem;
-        color: #F17012;
+        a {
+            font-size: 2rem;
+            color: #F17012;
+            
+            &:hover {
+                border-bottom: 2px solid #f17012;
+            }
+        }
     }
 }
 .cookin-button-login {

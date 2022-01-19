@@ -81,7 +81,7 @@ function Cookbook(state) {
                                         )
                                     })}
                                 </div>
-                                <button className="cookbook-delete-button" onClick={() => {onDelete(recipe.id)}}>Remove from cookbook</button>
+                                <button className="cookbook-delete-button" onClick={() => {onDelete(recipe.id);}}>Remove from cookbook</button>
                             </div>
                         )
                     })
