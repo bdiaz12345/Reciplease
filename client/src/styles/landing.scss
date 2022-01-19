@@ -22,57 +22,7 @@
     margin-bottom: 7rem;
     font-weight: 400;
 }
-#submit-btn {
-    background: #fcde7b;
-    padding: 3rem 4rem;
-    font-size: 28px;
-    color: black;
-    border: none;
-    font-weight: 238;
-    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
-    transition: .25s ease-in-out;
 
-    &:hover {
-        cursor: pointer;
-        background: coral;
-        color: white;
-        box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3);
-    }
-}
-form {
-    width: 40%;
-    display: flex;
-
-    input {
-        font-family: Roboto;
-        margin-top: 3vh;
-        width: 70%;
-        height: 4.5vh;
-        border: none;
-        font-size: 24px;
-        font-weight: 400;
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
-    }
-    button {
-        font-family: Roboto;
-        width: 30%;
-        height: 4.5vh;
-        background: #fcde7b;
-        border: none;
-        font-size: 24px;
-        font-weight: 400;
-        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
-        transition: .25s ease-in-out;
-        align-self: flex-end;
-
-        &:hover {
-            background: coral;
-            cursor: pointer;
-            color: white;
-            box-shadow: 0 10px 20px 0 rgba(0, 0, 0, .3);
-        }
-    }
-}
 .loading_container {
     width: 100%;
     display: flex;
@@ -127,7 +77,7 @@ form {
         display: none;
     }
 }
-#cook-button {
+#landing-btn {
     font-family: Roboto;
     width: 30%;
     background: #fcde7b;

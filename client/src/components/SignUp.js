@@ -3,12 +3,12 @@ import * as yup from 'yup';
 import schema from '../formSchema/signSchema';
 import axios from 'axios';
 import {useNavigate, Link} from 'react-router-dom';
+import { Loading3QuartersOutlined } from '@ant-design/icons'
+
 import "../styles/signup.scss";
 import { getUser } from '../actions';
 import { useDispatch } from 'react-redux';
-// import { Input } from '@material-ui/core';
-// import { Button } from '@mui/material';
-// import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 const initialValues = {
@@ -30,12 +30,7 @@ function SignUp() {
     
     const push = useNavigate();
 
-    const onChange = (evt) => {
-        const { name, value, } = evt.target;
-        inputChange(name, value);
-    }
-
-    const inputChange = (name, value) => {
+    const handleFormErrors = ((name, value) => {
         yup
             .reach(schema, name)
             .validate(value)
@@ -51,12 +46,12 @@ function SignUp() {
                     [name]: err.errors[0],
                 })
             })
+    })
 
-        setFormValues({
-            ...formValues,
-            [name]: value,
-        })
-    }
+    const handleInputChange = (e => {
+        handleFormErrors(e.target.name, e.target.value);
+        setFormValues({...formValues, [e.target.name]: e.target.value})
+    })
 
     useEffect(() => {
         schema.isValid(formValues)
@@ -68,6 +63,11 @@ function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        setSignUpSuccess({
+            message: <Loading3QuartersOutlined spin style={loadingIconStyle} />,
+            activeClass: signUpSuccess.activeClass
+        })
         
         axios.post('https://reciplease-backend.vercel.app/users/register', formValues)
             .then((res) => {
@@ -80,17 +80,24 @@ function SignUp() {
                 localStorage.setItem("token", JSON.stringify(res.data.token))
                 setTimeout(() => {
                     push("/search")
-                }, 2000)
+                }, 1500)
             })
             .catch(err => {
                 setSignUpSuccess({
-                    message: err.message,
+                    message: err.response.data.message,
                     activeClass: "error-modal"
                 })
+
+                console.log({err})
             })
             .finally(() => {
                 setFormValues(initialValues)
             })
+    }
+
+    const loadingIconStyle = {
+        fontSize: '3rem',
+        width: '100%'
     }
 
 
@@ -98,50 +105,47 @@ function SignUp() {
         <div className="signup-container">
                 <form onSubmit={handleSubmit}>
                     <h3>Sign Up</h3>
-                    <p>Don’t worry, we aren’t doing anything with your info! Just need you to create an account to save the recipes you love.</p>
+                    <p>Sign up today and begin searching for your favorite recipes right away!</p>
 
                     { signUpSuccess ? <p className={signUpSuccess.activeClass}>{signUpSuccess.message}</p> : null}
 
                     { formErrors.username && 
                         <p className="errors">{formErrors.username}</p> }
                     <input
-                        id="login-input"
+                        className="signup-input"
                         variant="outlined"
                         name='username'
                         type='text'
                         value={formValues.username}
-                        onChange={onChange}
+                        onChange={handleInputChange}
                         placeholder='Username'
-                        disableUnderline
                         />
 
                     { formErrors.email && 
                         <p className="errors">{formErrors.email}</p> }
                     <input
-                        id="login-input"
+                        className="signup-input"
                         name='email'
                         type='email'
                         value={formValues.email}
-                        onChange={onChange}
+                        onChange={handleInputChange}
                         placeholder='Email'
-                        disableUnderline
                     />
 
                     { formErrors.password && 
                         <p className="errors">{formErrors.password}</p> }
                     <input
-                        id="login-input"
+                        className="signup-input"
                         name='password'
                         type='password'
                         value={formValues.password}
-                        onChange={onChange}
+                        onChange={handleInputChange}
                         placeholder='Password'
-                        disableUnderline
                     />
                         
-                        <button type="submit" className="cookin-button-login">Let's get cook'n</button>
+                        <button disabled={disabledBtn} type="submit" className="signup-btn">Let's get cook'n</button>
 
-                    <p>
+                    <p className='options'>
                         Already have an account? <Link to="/login">Login here</Link>
                     </p>
                 </form>

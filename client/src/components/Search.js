@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/search.scss';
 import axios from 'axios';
-import { Drawer } from 'antd'
-import ReactHtmlParser from 'react-html-parser';
+import { Drawer } from 'antd';
 import { BookOutlined } from '@ant-design/icons';
+import ReactHtmlParser from 'react-html-parser';
+
 import Cards from './Cards';
 import { connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
@@ -46,6 +47,7 @@ function Search(state) {
     const history = useNavigate();
 
     const showDrawer = (e) => {
+        console.log(e)
         setDrawerRecipe({
             id: e.id,
             image: e.image,
@@ -154,11 +156,11 @@ function Search(state) {
                 <div className="drawer-container">
                     <img className="drawer-recipe-image" src={drawerRecipe.image} alt="recipe"/>
                     <div className="drawer-card-content">
-                        <h1 className="drawer-recipe-title">{drawerRecipe.title}</h1>
+                        <h2 className="drawer-recipe-title">{drawerRecipe.title}</h2>
                         <div className="drawer-recipe-info">
-                            <h3>Prep-time < br />{drawerRecipe.readyInMinutes} Minutes</h3>
-                            <h3>Servings < br />{drawerRecipe.servings}</h3>
-                            <h3>Score < br />{drawerRecipe.spoonacularScore}</h3>
+                            <p>Prep-time < br />{drawerRecipe.readyInMinutes} Minutes</p>
+                            <p>Servings < br />{drawerRecipe.servings}</p>
+                            <p>Score < br />{drawerRecipe.spoonacularScore}</p>
                         </div>
                     </div>
                     <div className='open'>

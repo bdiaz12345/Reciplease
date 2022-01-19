@@ -1,0 +1,108 @@
+.forgot-screen {
+    height: 100vh;
+    width: 100%;
+    background: url('../assets/forgot-password.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 20% 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forgot-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    background: rgba(235, 244, 255, 0.95);
+    border-radius: 5px;
+
+    h1 {
+        font-size: 6.4rem;
+        font-weight: bold;
+        margin-top: 5%;
+        margin-bottom: 4%;
+    }
+
+    p {
+        font-size: 1.8rem;
+        width: 454px;
+        text-align: center;
+        margin-bottom: 5%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .forgot-input {
+            background: #ffffff;
+            width: 65%;
+            box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+            font-size: 2.4rem;
+            border: none;
+            height: 50px;
+            padding-left: 3%;
+        }
+
+        .forgot-validation-error {
+            width: 65%;
+            text-align: left;
+            padding-top: 2%;
+            font-size: 2rem;
+            color: #ea1601;
+        }
+
+        .forgot-btn {
+            margin-top: 5%;
+            background: #FCDE7B;
+            border: none;
+            font-size: 2.8rem;
+            width: 65%;
+            margin-bottom: 5%;
+            box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+            text-transform: none;
+            color: black;
+            transition: .25s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                background: coral;
+                color: white;
+            }
+        }
+    }
+
+    .return-login {
+        font-size: 1.8rem;
+        color: #f17012;
+        
+
+        &:hover {
+            border-bottom: 2px solid #f17012;
+        }
+    }
+
+    .email-sent {
+        margin: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        svg {
+            color: #64bc26;
+            font-size: 9rem;
+            padding: 10%;
+            width: 100%;
+            border: 5px solid #64bc26;
+            border-radius: 50px;
+        }
+    }
+}

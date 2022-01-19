@@ -46,7 +46,7 @@ function Cookbook(state) {
                     {savedRecipes.length > 0 ? savedRecipes.map(recipe => {
                         return (
                             <div className="card">
-                                <img className="recipe-image" src={recipe.image} />
+                                <img className="recipe-image" alt="recipe" src={recipe.image} />
                                 <h1 className="recipe-title">{recipe.title}</h1>
                                 <div className="tags">
                                     <div className="recipe-diets">
