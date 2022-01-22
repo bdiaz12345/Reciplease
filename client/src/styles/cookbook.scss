@@ -7,14 +7,12 @@
     display: flex;
     justify-content: space-between;
 
-    .search-icon {
-        .anticon-search {
-            font-size: '48px';
-            color: 'coral';
-            cursor: 'pointer';
-            margin-left: '3rem';
-            margin-top: '1rem'
-        }
+    #search-icon {
+        font-size: 48px;
+        position: relative;
+        left: 2rem;
+        color: coral;
+        cursor: pointer;
     }
 
 
@@ -64,7 +62,7 @@
                 width: 100%;
 
                 .category {
-                    font-size: 1.5rem;
+                    font-size: 1.8rem;
                 }
 
                 .recipe-diets {
@@ -73,7 +71,7 @@
                         font-size: 2rem;
                     }
                     .category-tag {
-                        font-size: 1.8rem;
+                        font-size: 2rem;
                         margin: 0 1rem;
                         color: royalblue;
                     }
@@ -82,7 +80,7 @@
                 .recipe-dish-types {
                     display: flex;
                     .category {
-                        font-size: 2rem;
+                        font-size: rem;
                     }
                     .category-tag {
                         font-size: 1.8rem;
@@ -140,8 +138,8 @@
     }
 
     .logout-link {
-        color: #FCDE7B;
-        margin-right: 1.5rem;
+        color: coral;
+        margin-right: 2rem;
         font-size: 2.5rem;
         position: fixed;
         top: 3%;
@@ -266,6 +264,15 @@
                     font-size: 2rem;
                     display: flex;
                     align-self: flex-start;
+                }
+
+                .recipe-instructions {
+    
+                    .recipe-instruction-steps {
+                        .category {
+                            font-size: 1.8rem;
+                        }
+                    }
                 }
             }
             .cookbook-delete-button {
