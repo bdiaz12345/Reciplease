@@ -165,11 +165,11 @@
         justify-content: space-between;
 
         #search-icon {
-            font-size: '48px';
-            color: 'coral';
-            cursor: 'pointer';
-            margin-left: '3rem';
-            margin-top: '1rem'
+            font-size: 36px;
+            color: coral;
+            cursor: pointer;
+            position: absolute;
+            top: 4%;
         }
     
         
@@ -185,8 +185,8 @@
                 font-size: 30px;
                 color: #FCDE7B;
                 width: 60%;
-                position: fixed;
-                top: 1%;
+                position: absolute;
+                top: 1.5%;
                 left: 20%;
                 text-align: center;
             }
@@ -275,10 +275,10 @@
         }
     
         .logout-link {
-            color: #FCDE7B;
+            color: coral;
             font-size: 1.5rem;
-            position: fixed;
-            top: 4%;
+            position: absolute;
+            top: 5.5%;
             right: 0;
             text-decoration: underline;
         }
