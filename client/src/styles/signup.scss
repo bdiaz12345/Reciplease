@@ -99,6 +99,14 @@
 
 }
 
+@media (max-width: 850px) {
+    .signup-container {
+        form {
+            width: 80vw;
+        }
+    }
+}
+
 @media (max-width: 500px) {
     .signup-container {
         height: 100vh;

@@ -97,6 +97,15 @@
     }
 }
 
+@media (max-width: 850px) {
+    .landing-description {
+        width: 80%;
+    }
+    #landing-btn {
+        width: 50%;
+    }
+}
+
 @media (max-width: 500px) {
     .content {
         background: url('../assets/reciplease-landing.png');

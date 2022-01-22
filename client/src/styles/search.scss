@@ -131,6 +131,62 @@
     }
 }
 
+@media (max-width: 850px) {
+    .search-content {
+        .search-form {
+            width: 65vw;
+            transition: opacity .75s;
+            opacity: 1;
+            margin-top: 2rem;
+            
+            .search-input {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0) 80.21%, rgba(0, 0, 0, 0.25) 100%),
+                linear-gradient(0deg, #FFFFFF, #FFFFFF);
+                height: 5rem;
+                line-height: 5rem;
+                width: 45vw;
+                font-size: 2rem;
+                margin: 0;
+
+
+            }
+    
+            .search-button {
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0) 88.02%, #B8B6B6 100%),
+                linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0) 55.73%),
+                linear-gradient(0deg, #FCDE7B, #FCDE7B);
+                font-family: Roboto;
+                font-size: 2rem;
+                font-weight: 400;
+                text-align: center;
+                width: 20vw;
+                height: 5rem;
+                transition: .25s ease-in-out;
+            
+                &:hover {
+                    cursor: pointer;
+                    color: white;
+                    background: coral;
+                }
+            }
+        }
+        .search-header {
+            width: 100vw;
+            .logout-div {
+                .logout-link {
+                    color: coral;
+                    font-size: 3rem;
+                    text-decoration: underline;
+                    position: relative;
+                    right: 30%;
+                    top: 4%;
+                }
+            }
+        }
+
+    }
+}
+
 @media (max-width: 500px) {
     .search-content {
         min-height: 100vh;

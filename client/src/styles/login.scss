@@ -131,6 +131,12 @@
         
     }
 
+@media (max-width: 850px) {
+    .login-wrapper {
+        width: 80%;
+    }
+}
+
 @media (max-width: 500px) {
     #login-input {
         border: none;

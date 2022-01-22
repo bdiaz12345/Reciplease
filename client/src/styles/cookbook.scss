@@ -70,10 +70,10 @@
                 .recipe-diets {
                     display: flex;
                     .category {
-                        font-size: 1.5rem;
+                        font-size: 2rem;
                     }
                     .category-tag {
-                        font-size: 1.5rem;
+                        font-size: 1.8rem;
                         margin: 0 1rem;
                         color: royalblue;
                     }
@@ -82,10 +82,10 @@
                 .recipe-dish-types {
                     display: flex;
                     .category {
-                        font-size: 1.5rem;
+                        font-size: 2rem;
                     }
                     .category-tag {
-                        font-size: 1.5rem;
+                        font-size: 1.8rem;
                         margin: 0 1rem;
                         color: coral;
                     }
@@ -97,7 +97,7 @@
                 margin: 2rem 0;
                 .description-data {
                     margin-top: 2rem;
-                    font-size: 14px;
+                    font-size: 1.8rem;
                 }
             }
 
@@ -113,7 +113,7 @@
 
                 .recipe-instruction-steps {
                     .category {
-                        font-size: 1.5rem;
+                        font-size: 1.8rem;
                     }
                 }
             }
@@ -151,6 +151,154 @@
 
     .card-container::-webkit-scrollbar {
         display: none; /* Hides Scrollbar for Chrome, Safari and Opera */
+    }
+}
+
+@media (max-width: 850px) {
+    .cookbook-content {
+        height: 100vh;
+        width: 100%;
+        padding: 12rem 1rem 2rem 1rem;
+        background: url('../assets/cookbook.jpeg');
+        background-size: cover;
+        display: flex;
+        justify-content: space-between;
+
+        #search-icon {
+            font-size: 42px;
+            color: coral;
+            cursor: pointer;
+            position: absolute;
+            top: 4%;
+        }
+    
+        
+        .card-container {
+            position: static;
+            top: 4%;
+            width: 90vw;
+            overflow-y: scroll;
+            -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
+            scrollbar-width: none;  /* Hides Scrollbar for Firefox */
+            margin-top: 0;
+            margin-left: 3rem;
+            
+            .cookbook-header {
+                font-family: 'Rock Salt';
+                font-size: 6rem;
+                color: #FCDE7B;
+                width: 60%;
+                position: absolute;
+                left: 20%;
+                text-align: center;
+            }
+    
+            .card {
+                background: rgba(white, .5);
+                width: 90vw;
+                padding: 2rem;
+                border-radius: .5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin: 2rem 0;
+    
+                .recipe-image {
+                    width: 90%;
+                    border-radius: .5rem;
+                    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .15);
+                }
+    
+                .recipe-title {
+                    font-size: 4rem;
+                    margin-top: 1.5rem;
+                }
+    
+                .tags {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    font-size: 2rem;
+
+                    .category {
+                        font-size: 2rem;
+                        line-height: 24px;
+                    }
+    
+                    .recipe-diets {
+                        display: flex;
+                        flex-flow: wrap;
+                        p {
+                            font-size: 2rem;
+                            margin: 0 1rem;
+                            line-height: 24px;
+                            color: royalblue;
+                        }
+                        .category {
+                            font-size: 2rem;
+                        }
+                    }
+    
+                    .recipe-dish-types {
+                        display: flex;
+                        flex-flow: wrap;
+                        .category {
+                            font-size: 2rem;
+                        }
+                        p {
+                            margin: 0 1rem;
+                            line-height: 24px;
+                            color: coral;
+                        }
+                    }
+                }
+    
+                .description {
+                    font-size: 2rem;
+                    margin: 2rem 0;
+                    .description-data {
+                        font-size: 1.8rem;
+                    }
+                }
+    
+                .instructions-header {
+                    font-size: 2rem;
+                    display: flex;
+                    align-self: flex-start;
+                }
+            }
+            .cookbook-delete-button {
+                background: #FCDE7B;
+                font-size: 2rem;
+                box-shadow: 0px 7px 29px rgba(0, 0, 0, 0.25);
+                border: none;
+                transition: .25s ease-in-out;
+                align-self: center;
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+                width: 60vw;
+    
+                &:hover {
+                    background: coral;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+    
+        .logout-link {
+            color: coral;
+            font-size: 3rem;
+            position: absolute;
+            top: 4%;
+            right: 0;
+            text-decoration: underline;
+        }
+    
+        .card-container::-webkit-scrollbar {
+            display: none; /* Hides Scrollbar for Chrome, Safari and Opera */
+        }
     }
 }
 

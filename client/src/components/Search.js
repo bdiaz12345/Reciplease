@@ -151,7 +151,7 @@ function Search(state) {
                 placement="right"
                 onClose={onClose}
                 visible={visible}
-                width={window.matchMedia("(max-width: 500px)").matches ? '100vw' : '50vw'}
+                width={window.matchMedia("(max-width:850px)").matches ? '100vw' : '50vw'}
             >
                 <div className="drawer-container">
                     <img className="drawer-recipe-image" src={drawerRecipe.image} alt="recipe"/>
