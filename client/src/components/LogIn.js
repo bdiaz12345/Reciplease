@@ -15,7 +15,7 @@ const initialValues = {
     password: ''
 }
 
-function LogIn(state) {
+function LogIn() {
     const [loginValues, setLoginValues] = useState(initialValues);
     const [formErrors, setFormErrors] = useState(initialValues);
     const [disables, setDisabled] = useState(true);
@@ -25,8 +25,6 @@ function LogIn(state) {
     })
 
     const history = useNavigate();
-
-    console.log(state)
     const dispatch = useDispatch();
 
     useEffect(() => {

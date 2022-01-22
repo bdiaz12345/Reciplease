@@ -55,11 +55,9 @@ function ForgotPassword() {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log('input value', inputValue)
 
         axios.post('https://reciplease-backend.vercel.app/users/forgot-password', {email: inputValue.email.toLowerCase()})
-            .then(res => {
-                console.log(res)
+            .then(() => {
                 setEmailSent(true)
             })
             .catch(err => console.log({err}))

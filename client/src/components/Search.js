@@ -22,8 +22,6 @@ function Search(state) {
         }
     }, [state])
 
-    console.log('user', state)
-
     let openRecipe = {
         id: '',
         image: '',
@@ -79,10 +77,8 @@ function Search(state) {
                     recipe.liked = false;
                     return recipe
                 })
-                console.log('before', likedRecipe)
                 const user = JSON.parse(localStorage.getItem('user'))
                 axios.post('https://reciplease-backend.vercel.app/users/saved_recipes', {email: await user.email}).then(response => {
-                    console.log('saved recipes', response.data)
                     setSavedRecipes(response.data)
                     response.data.map(recipe => {
                         likedRecipe = likedRecipe.filter(x => {
@@ -123,8 +119,8 @@ function Search(state) {
                     email: state.email, 
                     recipe: recipe
                 })
-                .then(res => {
-                    console.log(res);
+                .then(() => {
+                    console.log('success!');
                 })
             }
 

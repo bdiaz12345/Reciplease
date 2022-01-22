@@ -11,7 +11,6 @@ const initialValue = {
 }
 
 function ResetPassword(state) {
-    console.log(state)
     const [inputValue, setInputValue] = useState(initialValue)
     const [inputError, setInputError] = useState(initialValue)
     const [disabledBtn, setDisabledBtn] = useState(true)
@@ -51,8 +50,8 @@ function ResetPassword(state) {
     const submitHandler = (e) => {
         e.preventDefault()
         axios.put('https://reciplease-backend.vercel.app/users/reset-password', {password: inputValue.password, token: token})
-            .then(res => {
-                console.log('congrats, you successfully changed your password!', res)
+            .then(() => {
+                console.log('congrats, you successfully changed your password!')
                 history('/login');
             })
             .catch((err) => {console.log(err)})

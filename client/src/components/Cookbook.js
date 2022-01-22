@@ -18,9 +18,7 @@ function Cookbook(state) {
     useEffect(async () => {
         const user = JSON.parse(localStorage.getItem('user'))
         dispatch(getUser({email: await user.email, username: await user.username}))
-        console.log(state)
         axios.post('https://reciplease-backend.vercel.app/users/saved_recipes', {email: await user.email}).then(res => {
-            console.log('saved recipes', res.data)
             setSavedRecipes(res.data)
         })
     }, [])
