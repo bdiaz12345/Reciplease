@@ -14,7 +14,7 @@
         width: 100vw;
         height: 10%;
         padding: 2rem 0 0 0;
-        position: fixed;
+        position: absolute;
         top: 0;
 
         div {
@@ -185,7 +185,7 @@
                 linear-gradient(0deg, #FFFFFF, #FFFFFF);
                 height: 3rem;
                 line-height: 3rem;
-                position: fixed;
+                position: absolute;
                 top: 13.5%;
                 right: 28%;
                 width: 65vw;
@@ -200,7 +200,7 @@
                 linear-gradient(0deg, #FCDE7B, #FCDE7B);
                 font-family: Roboto;
                 font-size: 16px;
-                position: fixed;
+                position: absolute;
                 top: 13.5%;
                 right: 3.5%;
                 font-weight: 400;
