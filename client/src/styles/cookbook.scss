@@ -174,11 +174,14 @@
     
         
         .card-container {
+            position: static;
+            top: 2%;
             width: 90vw;
             overflow-y: scroll;
             -ms-overflow-style: none;  /* Hides Scrollbar for IE and Edge */
             scrollbar-width: none;  /* Hides Scrollbar for Firefox */
             margin-top: 0;
+            margin-left: 1rem;
             
             .cookbook-header {
                 font-family: 'Rock Salt';
@@ -186,7 +189,6 @@
                 color: #FCDE7B;
                 width: 60%;
                 position: absolute;
-                top: 1.5%;
                 left: 20%;
                 text-align: center;
             }
@@ -220,6 +222,7 @@
 
                     .category {
                         font-size: 1.5rem;
+                        line-height: 24px;
                     }
     
                     .recipe-diets {
@@ -227,6 +230,7 @@
                         flex-flow: wrap;
                         p {
                             margin: 0 1rem;
+                            line-height: 24px;
                             color: royalblue;
                         }
                     }
@@ -236,6 +240,7 @@
                         flex-flow: wrap;
                         p {
                             margin: 0 1rem;
+                            line-height: 24px;
                             color: coral;
                         }
                     }
