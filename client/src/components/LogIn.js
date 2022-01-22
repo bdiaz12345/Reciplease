@@ -92,7 +92,7 @@ function LogIn(state) {
         <div className="login-screen">
             <div className="login-wrapper">
                 <h1>Login</h1>
-                <p>Welcome back! Lettuce show you some more<br/> recipes to fall in love with!</p>
+                <p>Welcome back! Lettuce show you some more recipes to fall in love with!</p>
                 {formErrors.email && <p className='errors'>{formErrors.email}</p>}
                 {formErrors.password && <p className='errors'>{formErrors.password}</p>}
 
