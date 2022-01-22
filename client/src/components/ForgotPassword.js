@@ -55,6 +55,7 @@ function ForgotPassword() {
 
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log('input value', inputValue)
 
         axios.post('https://reciplease-backend.vercel.app/users/forgot-password', inputValue)
             .then(res => {

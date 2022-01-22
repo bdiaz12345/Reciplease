@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { resetPasswordSchema } from '../formSchema/forgotPasswordSchema'
@@ -8,10 +10,15 @@ const initialValue = {
     password: ""
 }
 
-function ResetPassword() {
+function ResetPassword(state) {
+    console.log(state)
     const [inputValue, setInputValue] = useState(initialValue)
     const [inputError, setInputError] = useState(initialValue)
     const [disabledBtn, setDisabledBtn] = useState(true)
+
+    const token = window.location.pathname.slice(7)
+
+    const history = useNavigate();
 
     useEffect(() => {
         resetPasswordSchema.isValid(inputValue)
@@ -43,7 +50,12 @@ function ResetPassword() {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        console.log("successful submission")
+        axios.put('https://reciplease-backend.vercel.app/users/reset-password', {password: inputValue.password, token: token})
+            .then(res => {
+                console.log('congrats, you successfully changed your password!', res)
+                history('/login');
+            })
+            .catch((err) => {console.log(err)})
     }
     
     return (
@@ -70,4 +82,8 @@ function ResetPassword() {
     )
 }
 
-export default ResetPassword
+const mapStateToProps = (state) => {
+    return state;
+}
+
+export default connect(mapStateToProps)(ResetPassword);
