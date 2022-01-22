@@ -20,25 +20,22 @@
         div {
             .anticon-book {
                 font-size: 48px;
-                color: #FCDE7B;
+                color: coral;
                 margin: 3rem 0 0 2rem;
                 transition: .25s ease-in-out;
 
                 &:hover {
                     cursor: pointer;
-                    color: coral;
+                    color: #FCDE7B;
                 }
             }
-        }
-        .landing-title {
-            color: #FCDE7B;
         }
 
 
         .logout-div {
             margin-top: 3rem;
             .logout-link {
-                color: #FCDE7B;
+                color: coral;
                 font-size: 2.5rem;
                 margin-right: 2rem;
                 text-decoration: underline;
@@ -168,7 +165,7 @@
             .logout-div {
                 width: 10vw;
                 .logout-link {
-                    color: #FCDE7B;
+                    color: coral;
                     font-size: 1.5rem;
                     text-decoration: underline;
                     position: relative;

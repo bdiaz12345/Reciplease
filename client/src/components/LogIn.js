@@ -59,7 +59,7 @@ function LogIn(state) {
             activeClass: signUpSuccess.activeClass
         })
 
-        axios.post('https://reciplease-backend.vercel.app/users/login', loginValues)
+        axios.post('https://reciplease-backend.vercel.app/users/login', {email: loginValues.email.toLowerCase(), password: loginValues.password})
             .then(res => {
                 setSignUpSuccess({
                     message: "Login Successful!",
@@ -67,7 +67,7 @@ function LogIn(state) {
                 })
 
                 dispatch(getUser({username: res.data.username, email: loginValues.email}));
-                localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email}))
+                localStorage.setItem('user', JSON.stringify({username: res.data.username, email: loginValues.email.toLowerCase()}))
                 localStorage.setItem('token', res.data.token)
 
                 setTimeout(() => {
